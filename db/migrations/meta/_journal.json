@@ -1,0 +1,27 @@
+{
+  "version": "7",
+  "dialect": "mysql",
+  "entries": [
+    {
+      "idx": 0,
+      "version": "5",
+      "when": 1770959281954,
+      "tag": "0000_smart_stark_industries",
+      "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "5",
+      "when": 1770959606573,
+      "tag": "0001_perpetual_scalphunter",
+      "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "5",
+      "when": 1770960301307,
+      "tag": "0002_powerful_mimic",
+      "breakpoints": true
+    }
+  ]
+}

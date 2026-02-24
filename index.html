@@ -1,0 +1,801 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EQUITTY | Real-World Asset Investment</title>
+    <meta name="description" content="The investment platform for real-world projects right from the palm of your hand.">
+    
+    <link rel="icon" href="equitty_isotipo.png" type="image/png">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Alexandria:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        display: ['Alexandria', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            blue: '#006AD5',
+                            cyan: '#00B4C4',
+                            dark: '#00346E',
+                            accent: '#FFF3C1',
+                            black: '#050A14',
+                            surface: '#0F172A',
+                        }
+                    },
+                    animation: {
+                        'blob': 'blob 7s infinite',
+                        'fade-in-up': 'fadeInUp 0.8s ease-out forwards',
+                        'pulse-focus': 'pulseFocus 1.5s infinite',
+                        'float': 'float 6s ease-in-out infinite',
+                        'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite'					
+                    },
+                    keyframes: {
+                        blob: {
+                            '0%': { transform: 'translate(0px, 0px) scale(1)' },
+                            '33%': { transform: 'translate(30px, -50px) scale(1.1)' },
+                            '66%': { transform: 'translate(-20px, 20px) scale(0.9)' },
+                            '100%': { transform: 'translate(0px, 0px) scale(1)' },
+                        },
+                        fadeInUp: {
+                            '0%': { opacity: '0', transform: 'translateY(20px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' },
+                        },
+                        pulseFocus: {
+                            '0%': { boxShadow: '0 0 0 0 rgba(0, 180, 196, 0.7)' },
+                            '70%': { boxShadow: '0 0 0 10px rgba(0, 180, 196, 0)' },
+                            '100%': { boxShadow: '0 0 0 0 rgba(0, 180, 196, 0)' },
+                        },
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-20px)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body { background-color: #050A14; color: #ffffff; overflow-x: hidden; }
+        .glass { background: rgba(255, 255, 255, 0.03); backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.05); }
+        .glass-card { background: linear-gradient(145deg, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0.01) 100%); backdrop-filter: blur(20px); border: 1px solid rgba(255, 255, 255, 0.08); box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1); }
+        
+        /* Language Toggle Switch Logic - REFINED */
+        /* Estado por defecto (Unchecked = ES) */
+        .toggle-knob {
+            transform: translateX(0);
+            background-color: #9CA3AF; /* Gray-400 */
+        }
+        
+        /* Estado Checked = EN */
+        #lang-toggle:checked ~ .toggle-knob {
+            transform: translateX(100%);
+            background-color: #00B4C4; /* Brand Cyan */
+            border-color: #00B4C4;
+        }
+        
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #050A14; }
+        ::-webkit-scrollbar-thumb { background: #00346E; border-radius: 4px; }
+        .text-gradient-primary { background: linear-gradient(135deg, #00B4C4 0%, #006AD5 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .reveal { opacity: 0; transform: translateY(30px); transition: all 0.8s ease-out; }
+        .reveal.active { opacity: 1; transform: translateY(0); }
+        
+        .input-highlight {
+            animation: pulseFocus 2s ease-in-out infinite;
+            border-color: #00B4C4 !important;
+            background-color: rgba(0, 180, 196, 0.1) !important;
+        }
+    </style>
+</head>
+<body class="antialiased selection:bg-brand-cyan selection:text-brand-black relative">
+
+    <div class="fixed inset-0 z-[-1] overflow-hidden pointer-events-none">
+        <div class="absolute top-[-10%] left-[-10%] w-[500px] h-[500px] bg-brand-blue/20 rounded-full mix-blend-screen filter blur-[120px] opacity-30 animate-blob"></div>
+        <div class="absolute bottom-[-10%] right-[-10%] w-[500px] h-[500px] bg-brand-cyan/20 rounded-full mix-blend-screen filter blur-[120px] opacity-30 animate-blob animation-delay-2000"></div>
+    </div>
+
+    <nav id="navbar" class="fixed w-full z-50 transition-all duration-300 top-0 border-b border-transparent py-4">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-10">
+                <div class="flex-shrink-0 flex items-center cursor-pointer" onclick="window.scrollTo(0,0)">
+                    <img src="equitty_logo.png" alt="EQUITTY" class="h-8 w-auto hidden md:block" onerror="this.style.display='none'; this.nextElementSibling.style.display='block'">
+                    <span class="font-display font-bold text-2xl tracking-widest text-white hidden">EQUITTY</span>
+                    <img src="equitty_isotipo.png" alt="E" class="h-8 w-auto md:hidden" onerror="this.style.display='none'">
+                </div>
+                
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-8">
+                        <a href="#como-funciona" class="hover:text-brand-cyan transition-colors px-3 py-2 rounded-md text-sm font-medium" data-i18n="nav_how">How it works</a>
+                        <a href="#que-es" class="hover:text-brand-cyan transition-colors px-3 py-2 rounded-md text-sm font-medium" data-i18n="nav_benefits">Benefits</a>
+                        <a href="#faqs" class="hover:text-brand-cyan transition-colors px-3 py-2 rounded-md text-sm font-medium">FAQ</a>
+                    </div>
+                </div>
+
+                <div class="hidden md:flex items-center">
+                    <div class="relative flex items-center bg-brand-surface border border-white/10 rounded-full px-3 py-1 cursor-pointer">
+                        <span id="lang-label-es" class="text-xs font-bold text-gray-500 mr-3 transition-colors select-none">ES</span>
+                        
+                        <label for="lang-toggle" class="relative inline-flex items-center cursor-pointer">
+                            <input type="checkbox" id="lang-toggle" class="sr-only peer">
+                            <div class="w-8 h-4 bg-gray-700 rounded-full peer-focus:outline-none border border-gray-600"></div>
+                            <div class="toggle-knob absolute left-[2px] top-[2px] bg-white border border-gray-300 rounded-full h-3 w-3 transition-all duration-300 ease-in-out"></div>
+                        </label>
+
+                        <span id="lang-label-en" class="text-xs font-bold text-white ml-3 transition-colors select-none">EN</span>
+                    </div>
+                </div>
+
+                <div class="-mr-2 flex md:hidden">
+                    <button type="button" onclick="toggleMobileMenu()" class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-white/10 focus:outline-none">
+                        <span class="material-icons-outlined">menu</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <div id="mobile-menu" class="hidden md:hidden glass border-t border-white/10 absolute w-full bg-brand-black/95 backdrop-blur-xl">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                <a href="#como-funciona" onclick="toggleMobileMenu()" class="text-gray-300 hover:text-white block px-3 py-2 rounded-md text-base font-medium" data-i18n="nav_how">How it works</a>
+                <a href="#que-es" onclick="toggleMobileMenu()" class="text-gray-300 hover:text-white block px-3 py-2 rounded-md text-base font-medium" data-i18n="nav_benefits">Benefits</a>
+                <a href="#faqs" onclick="toggleMobileMenu()" class="text-gray-300 hover:text-white block px-3 py-2 rounded-md text-base font-medium">FAQ</a>
+                <button onclick="toggleLanguageMobile()" class="w-full text-left text-brand-cyan font-bold block px-3 py-2 rounded-md text-base mt-2 border-t border-white/10 pt-4">
+                    <span id="mobile-lang-text">Switch to Español</span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <main class="relative pt-20">
+
+        <section id="waitlist-section" class="min-h-[90vh] flex items-center justify-center relative px-4 sm:px-6 lg:px-8 overflow-hidden">
+            <div class="max-w-7xl w-full grid grid-cols-1 lg:grid-cols-2 gap-12 items-center relative z-10">
+                
+                <div class="space-y-8 reveal active">
+                    <div class="inline-flex items-center space-x-2 bg-brand-cyan/10 border border-brand-cyan/20 rounded-full px-4 py-1.5 backdrop-blur-sm">
+                        <span class="relative flex h-3 w-3">
+                          <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-brand-cyan opacity-75"></span>
+                          <span class="relative inline-flex rounded-full h-3 w-3 bg-brand-cyan"></span>
+                        </span>
+                        <span class="text-brand-cyan text-xs font-bold tracking-wider uppercase" data-i18n="hero_badge">Early Access Open</span>
+                    </div>
+
+                    <h1 class="text-4xl md:text-6xl font-display font-bold leading-tight uppercase" data-i18n="hero_title">
+                        The Investment Platform for <span class="text-gradient-primary">Real-World</span> Projects<br>
+                        <span class="text-2xl md:text-4xl font-normal text-gray-300 normal-case block mt-4">Right from the palm of your hand</span>
+                    </h1>
+                    
+                    <p class="text-lg text-gray-400 max-w-lg leading-relaxed" data-i18n="hero_desc">
+                        We transform real assets into digital opportunities. Be among the first to access high-value properties starting at $50. Blockchain Transparency.
+                    </p>
+
+                    <div id="waitlist-container" class="max-w-md w-full">
+                        
+                        <div class="lg:hidden mb-6 w-full relative">
+                            <div class="glass p-4 rounded-xl flex items-center justify-between border border-brand-cyan/20 bg-brand-cyan/5 relative overflow-hidden">
+                                <img src="equitty_isotipo.png" alt="" class="absolute -right-6 -top-6 w-32 h-32 opacity-10 animate-pulse-slow pointer-events-none transform rotate-12 z-0">
+                                
+                                <span class="relative z-10 text-xs text-brand-cyan font-bold uppercase tracking-widest" data-i18n="counter_label">Investors Registered</span>
+                                <span class="relative z-10 text-4xl font-display font-bold text-white tabular-nums tracking-tighter drop-shadow-lg" id="mobile-live-counter">4,569</span>
+                            </div>
+                        </div>
+
+                        <form id="waitlist-form" onsubmit="submitWaitlist(event)" class="space-y-4">
+                            <div class="relative group">
+                                <div class="absolute -inset-0.5 bg-gradient-to-r from-brand-blue to-brand-cyan rounded-lg blur opacity-30 group-hover:opacity-75 transition duration-1000 group-hover:duration-200"></div>
+                                <div class="relative flex flex-col sm:flex-row bg-brand-black rounded-lg p-1 gap-2 border border-white/10" id="input-container">
+                                    <div class="flex items-center flex-grow pl-3">
+                                        <span class="material-icons-outlined text-gray-500">email</span>
+                                        <input type="email" id="email" required placeholder="Enter your email address" 
+                                               class="w-full bg-transparent text-white placeholder-gray-500 px-3 h-12 outline-none focus:ring-0 text-base" data-i18n-placeholder="email_placeholder">
+                                    </div>
+                                    <button type="submit" id="submit-btn" class="bg-brand-cyan text-brand-black font-bold px-6 h-12 rounded-md hover:bg-white transition-all shadow-lg flex items-center justify-center min-w-[140px] text-sm whitespace-nowrap">
+                                        <span data-i18n="btn_reserve">Reserve your spot</span>
+                                    </button>
+                                </div>
+                            </div>
+                            
+                            <p class="text-xs text-gray-500 mt-4 text-center">
+                                * <span class="text-white font-bold" id="form-counter-text">4,569</span> <span data-i18n="form_disclaimer">people are already in line.</span> <br>
+                                <span data-i18n="terms_prefix">By signing up you agree to our</span> <button type="button" onclick="openModal('Privacidad')" class="text-brand-cyan hover:underline" data-i18n="terms_link">Privacy Policy</button>.
+                            </p>
+                        </form>
+
+                        <div id="success-dashboard" class="hidden glass-card rounded-2xl p-6 border-t-4 border-t-brand-cyan animate-fade-in-up mt-6">
+                            <div class="text-center mb-6">
+                                <div class="mx-auto flex items-center justify-center h-16 w-16 rounded-full bg-brand-cyan/20 mb-4">
+                                    <span class="material-icons-outlined text-3xl text-brand-cyan">verified</span>
+                                </div>
+                                <h3 class="text-2xl font-display font-bold text-white" data-i18n="success_title">You are on the list!</h3>
+                                <p class="text-gray-400 text-sm" data-i18n="success_sub">We have reserved your spot.</p>
+                            </div>
+                            
+                            <div class="bg-brand-black/50 rounded-xl p-4 mb-6 border border-white/5 text-center">
+                                <p class="text-xs uppercase tracking-widest text-gray-500 mb-1" data-i18n="success_pos_label">Your Current Position</p>
+                                <div class="text-5xl font-display font-bold text-gradient-primary tracking-tighter" id="success-counter-text">#4,570</div>
+                            </div>
+
+                            <div class="space-y-3">
+                                <p class="text-sm text-gray-300 font-medium text-center" data-i18n="success_rank_up">How to move up the rank:</p>
+                                <div class="flex items-center justify-between p-3 bg-white/5 rounded-lg border border-white/5 hover:border-brand-cyan/30 transition-colors cursor-pointer group">
+                                    <div class="flex items-center space-x-3">
+                                        <div class="bg-blue-500/20 p-2 rounded-md group-hover:bg-blue-500/40 transition">
+                                            <span class="material-icons-outlined text-blue-400 text-sm">person_add</span>
+                                        </div>
+                                        <div class="text-left">
+                                            <p class="text-sm font-bold text-white" data-i18n="action_refer">Refer Friends</p>
+                                            <p class="text-xs text-gray-500">+500 pts</p>
+                                        </div>
+                                    </div>
+                                    <span class="material-icons-outlined text-gray-500 text-sm">content_copy</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="relative hidden lg:flex h-full min-h-[500px] items-center justify-center reveal delay-200">
+                     <img src="equitty_isotipo.png" class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[90%] opacity-5 animate-pulse pointer-events-none" alt="">
+                    
+                    <div class="relative w-96 h-96 glass-card rounded-[3rem] border-2 border-white/10 shadow-[0_0_50px_rgba(0,180,196,0.15)] flex flex-col items-center justify-center animate-float overflow-hidden">
+                        <div class="absolute inset-0 bg-gradient-to-br from-brand-cyan/5 to-transparent"></div>
+                        
+                        <p class="text-brand-cyan text-sm font-bold tracking-[0.2em] uppercase mb-4 z-10" data-i18n="counter_label">Investors Registered</p>
+                        
+                        <div class="text-7xl font-display font-bold text-white z-10 tabular-nums tracking-tight" id="live-counter">
+                            4,569
+                        </div>
+                        
+                        <div class="mt-8 z-10">
+                            <button onclick="focusOnInput()" class="flex items-center space-x-2 bg-white text-brand-black px-6 py-3 rounded-full font-bold hover:scale-105 transition-transform shadow-xl">
+                                <span class="material-icons-outlined text-brand-blue">touch_app</span>
+                                <span data-i18n="hero_cta_secondary">Click here to join waitlist</span>
+                            </button>
+                        </div>
+
+                        <div class="absolute bottom-0 w-full h-1/2 bg-gradient-to-t from-brand-blue/10 to-transparent"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="como-funciona" class="py-20 bg-brand-surface border-y border-white/5 relative overflow-hidden">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+                <div class="text-center mb-16 reveal">
+                    <h2 class="text-sm font-bold text-brand-cyan tracking-widest uppercase mb-2" data-i18n="model_subtitle">The Equitty Model</h2>
+                    <h3 class="text-3xl md:text-4xl font-display font-bold text-white" data-i18n="model_title">Tokenization in Latin America</h3>
+                    <p class="mt-4 text-gray-400 max-w-2xl mx-auto" data-i18n="model_desc">We democratize access to large real estate and business projects by dividing them into accessible digital shares.</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <div class="glass-card p-8 rounded-2xl text-center hover:border-brand-cyan/50 transition-colors reveal delay-100 group">
+                        <div class="w-16 h-16 bg-brand-blue/20 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform">
+                            <span class="material-icons-outlined text-brand-blue text-3xl">domain</span>
+                        </div>
+                        <h4 class="text-xl font-bold text-white mb-3" data-i18n="step1_title">1. Asset Selection</h4>
+                        <p class="text-sm text-gray-400" data-i18n="step1_desc">EQUITTY selects high-value properties (Buildings, Commercial Centers) with proven profitability track records in LatAm.</p>
+                    </div>
+
+                    <div class="glass-card p-8 rounded-2xl text-center hover:border-brand-cyan/50 transition-colors reveal delay-200 group">
+                        <div class="w-16 h-16 bg-brand-cyan/20 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform">
+                            <span class="material-icons-outlined text-brand-cyan text-3xl">data_object</span>
+                        </div>
+                        <h4 class="text-xl font-bold text-white mb-3" data-i18n="step2_title">2. Tokenization</h4>
+                        <p class="text-sm text-gray-400" data-i18n="step2_desc">We split the property into thousands of digital tokens. Each token represents a legal fraction of ownership, accessible from $50.</p>
+                    </div>
+
+                    <div class="glass-card p-8 rounded-2xl text-center hover:border-brand-cyan/50 transition-colors reveal delay-300 group">
+                        <div class="w-16 h-16 bg-brand-accent/20 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform">
+                            <span class="material-icons-outlined text-brand-accent text-3xl">trending_up</span>
+                        </div>
+                        <h4 class="text-xl font-bold text-white mb-3" data-i18n="step3_title">3. Profitability</h4>
+                        <p class="text-sm text-gray-400" data-i18n="step3_desc">Receive rental dividends directly to your wallet and earn capital gains when the asset appreciates in value.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="que-es" class="py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 reveal">
+                <h3 class="text-3xl md:text-5xl font-display font-bold text-white" data-i18n="benefits_title">More than an investment, <br>financial freedom.</h3>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 md:grid-rows-2 gap-6">
+                
+                <div class="md:col-span-2 md:row-span-2 glass-card rounded-3xl p-8 relative overflow-hidden group hover:border-brand-cyan/30 transition-colors reveal flex flex-col justify-between">
+    
+                    <div class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=2070&auto=format&fit=crop')] bg-cover bg-center opacity-10 mix-blend-luminosity group-hover:opacity-15 transition-opacity duration-700 pointer-events-none"></div>
+                    <div class="absolute inset-0 bg-gradient-to-t from-brand-black via-brand-black/80 to-transparent pointer-events-none"></div>
+
+                    <div class="relative z-10">
+                        <div class="h-12 w-12 bg-brand-blue rounded-xl flex items-center justify-center mb-6 shadow-[0_0_15px_rgba(0,106,213,0.4)]">
+                            <span class="material-icons-outlined text-white">token</span>
+                        </div>
+                        <h4 class="text-2xl font-bold text-white mb-4" data-i18n="benefit1_title">Priority Access</h4>
+                        <p class="text-gray-400 text-lg leading-relaxed max-w-md" data-i18n="benefit1_desc">
+                            The best real estate assets sell out in minutes. By being on the waitlist, you get a 24-hour window to invest before the general public.
+                        </p>
+                    </div>
+
+                    <div class="relative z-10 mt-8">
+                        <div class="bg-white/5 border border-white/10 rounded-xl p-4 backdrop-blur-md max-w-sm ml-auto mr-0 transform group-hover:-translate-y-1 transition-transform duration-500">
+                            <div class="flex items-center justify-between mb-4 opacity-40">
+                                <div class="flex items-center gap-3">
+                                    <div class="w-8 h-8 rounded-full bg-gray-700 flex items-center justify-center">
+                                        <span class="material-icons-outlined text-sm">public</span>
+                                    </div>
+                                    <div>
+                                        <p class="text-xs font-bold uppercase tracking-wider">Public Sale</p>
+                                        <p class="text-[10px]">Starts in 48h</p>
+                                    </div>
+                                </div>
+                                <span class="material-icons-outlined text-gray-400">lock</span>
+                            </div>
+                            
+                            <div class="h-px w-full bg-white/10 mb-4"></div>
+
+                            <div class="flex items-center justify-between">
+                                <div class="flex items-center gap-3">
+                                    <div class="w-8 h-8 rounded-full bg-brand-cyan/20 border border-brand-cyan/50 flex items-center justify-center">
+                                        <span class="material-icons-outlined text-sm text-brand-cyan">verified_user</span>
+                                    </div>
+                                    <div>
+                                        <p class="text-xs font-bold uppercase tracking-wider text-white">Waitlist Access</p>
+                                        <p class="text-[10px] text-brand-cyan font-bold animate-pulse">Open Now</p>
+                                    </div>
+                                </div>
+                                <span class="material-icons-outlined text-brand-cyan">lock_open</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <span class="material-icons-outlined text-9xl text-white opacity-[0.02] absolute -top-4 -right-4 pointer-events-none transform -rotate-12">apartment</span>
+                </div>
+
+                <div class="glass-card rounded-3xl p-8 reveal delay-100 hover:border-brand-cyan/30 transition-colors bg-gradient-to-br from-brand-surface to-brand-cyan/5">
+                    <div class="h-10 w-10 bg-brand-accent/20 rounded-lg flex items-center justify-center mb-4">
+                        <span class="material-icons-outlined text-brand-accent">military_tech</span>
+                    </div>
+                    <h4 class="text-xl font-bold text-white mb-2" data-i18n="benefit2_title">Rank Up & Win</h4>
+                    <p class="text-gray-400 text-sm" data-i18n="benefit2_desc">Refer friends to earn points. Top 500 users get lower fees and exclusive "Early Founder" NFTs.</p>
+                </div>
+
+                <div class="glass-card rounded-3xl p-8 reveal delay-200 hover:border-brand-cyan/30 transition-colors">
+                    <div class="h-10 w-10 bg-brand-cyan/20 rounded-lg flex items-center justify-center mb-4">
+                        <span class="material-icons-outlined text-brand-cyan">payments</span>
+                    </div>
+                    <h4 class="text-xl font-bold text-white mb-2" data-i18n="benefit3_title">24/7 Liquidity</h4>
+                    <p class="text-gray-400 text-sm" data-i18n="benefit3_desc">Secondary market to sell your tokens whenever you want. No more waiting years to exit.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="faqs" class="py-20 bg-black/30">
+            <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+                <h2 class="text-3xl font-display font-bold text-center mb-12" data-i18n="faq_title">Frequently Asked Questions</h2>
+                <div class="space-y-4">
+                    <div class="glass-card rounded-xl overflow-hidden reveal">
+                        <button class="w-full px-6 py-4 text-left flex justify-between items-center focus:outline-none" onclick="toggleAccordion('faq1')">
+                            <span class="font-medium text-lg" data-i18n="faq1_q">What do I receive when I invest?</span>
+                            <span id="icon-faq1" class="material-icons-outlined text-brand-cyan transition-transform duration-300">add</span>
+                        </button>
+                        <div id="faq1" class="hidden px-6 pb-4 text-gray-400 text-sm border-t border-white/5 pt-4" data-i18n="faq1_a">
+                            You receive digital tokens that legally represent your share in the asset. These are stored in your digital wallet and entitle you to receive proportional economic returns.
+                        </div>
+                    </div>
+                    <div class="glass-card rounded-xl overflow-hidden reveal">
+                        <button class="w-full px-6 py-4 text-left flex justify-between items-center focus:outline-none" onclick="toggleAccordion('faq2')">
+                            <span class="font-medium text-lg" data-i18n="faq2_q">Is it legally safe?</span>
+                            <span id="icon-faq2" class="material-icons-outlined text-brand-cyan transition-transform duration-300">add</span>
+                        </button>
+                        <div id="faq2" class="hidden px-6 pb-4 text-gray-400 text-sm border-t border-white/5 pt-4" data-i18n="faq2_a">
+                            Yes. EQUITTY operates under a robust legal framework where every token issuance is backed by a fiduciary or corporate structure that owns the physical real asset.
+                        </div>
+                    </div>
+                    <div class="glass-card rounded-xl overflow-hidden reveal">
+                        <button class="w-full px-6 py-4 text-left flex justify-between items-center focus:outline-none" onclick="toggleAccordion('faq3')">
+                            <span class="font-medium text-lg" data-i18n="faq3_q">When can I invest?</span>
+                            <span id="icon-faq3" class="material-icons-outlined text-brand-cyan transition-transform duration-300">add</span>
+                        </button>
+                        <div id="faq3" class="hidden px-6 pb-4 text-gray-400 text-sm border-t border-white/5 pt-4" data-i18n="faq3_a">
+                            By joining the waitlist, you will be notified 48 hours before the public launch of the first round of assets, ensuring your chance to participate.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="border-t border-white/10 bg-black pt-16 pb-8">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
+                <div class="col-span-1 md:col-span-2">
+                    <div class="flex items-center space-x-2 mb-4">
+                        <img src="equitty_logo_white.png" alt="EQUITTY" class="h-8 w-auto">
+                    </div>
+                    <p class="text-gray-400 text-sm max-w-sm mb-6" data-i18n="footer_motto">
+                        Building the financial infrastructure of the future. Transparent, secure, and borderless investment.
+                    </p>
+                    <div class="flex space-x-4 items-center">
+                        <a href="https://www.instagram.com/equitty_/" target="_blank" class="text-gray-400 hover:text-brand-cyan transition-colors" aria-label="Instagram">
+                             <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                                <path fill-rule="evenodd" d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-1.48 3.225-1.691 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849 1.498-3.227 1.691-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" clip-rule="evenodd" />
+                            </svg>
+                        </a>
+                        </div>
+                </div>
+                
+                <div>
+                    <h4 class="text-white font-bold mb-4 uppercase text-xs tracking-wider">Platform</h4>
+                    <ul class="space-y-2 text-sm text-gray-400">
+                        <li><button onclick="openModal('Propiedades')" class="hover:text-brand-cyan transition-colors text-left" data-i18n="link_props">Properties</button></li>
+                        <li><button onclick="openModal('Mercado Secundario')" class="hover:text-brand-cyan transition-colors text-left" data-i18n="link_secondary">Secondary Market</button></li>
+                        <li><button onclick="openModal('Tokenomics')" class="hover:text-brand-cyan transition-colors text-left">Tokenomics</button></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="text-white font-bold mb-4 uppercase text-xs tracking-wider">Legal</h4>
+                    <ul class="space-y-2 text-sm text-gray-400">
+                        <li><button onclick="openModal('Privacidad')" class="hover:text-brand-cyan transition-colors text-left" data-i18n="link_privacy">Privacy</button></li>
+                        <li><button onclick="openModal('Términos de Uso')" class="hover:text-brand-cyan transition-colors text-left" data-i18n="link_terms">Terms of Use</button></li>
+                        <li><button onclick="openModal('Riesgos')" class="hover:text-brand-cyan transition-colors text-left" data-i18n="link_risks">Risks</button></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center text-xs text-gray-600 gap-4">
+                <p>&copy; 2026 EQUITTY. <span data-i18n="rights">All rights reserved.</span></p>
+                <div class="flex flex-col md:flex-row items-center gap-2 md:gap-4">
+                    <span>Powered by <span class="text-brand-blue font-bold">Soluciones OMEGA</span></span>
+                    
+                    <div class="flex items-center space-x-4">
+                        <a href="mailto:info@omegasolutions.sv" class="text-gray-500 hover:text-brand-blue transition-colors" title="Email">
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M1.5 8.67v8.58a3 3 0 003 3h15a3 3 0 003-3V8.67l-8.928 5.493a3 3 0 01-3.144 0L1.5 8.67z" />
+                                <path d="M22.5 6.908V6.75a3 3 0 00-3-3h-15a3 3 0 00-3 3v.158l9.714 5.978a1.5 1.5 0 001.572 0L22.5 6.908z" />
+                            </svg>
+                        </a>
+
+                        <a href="https://instagram.com/omegasolutions.sv" target="_blank" class="text-gray-500 hover:text-pink-500 transition-colors" title="Instagram">
+                             <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                                <path fill-rule="evenodd" d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-1.48 3.225-1.691 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849 1.498-3.227 1.691-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" clip-rule="evenodd" />
+                            </svg>
+                        </a>
+
+                        <a href="https://wa.me/50372076611" target="_blank" class="text-gray-500 hover:text-green-500 transition-colors" title="WhatsApp">
+                            <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </footer>
+
+    <div id="info-modal" class="fixed inset-0 z-[60] hidden flex items-center justify-center p-4">
+        <div class="absolute inset-0 bg-black/80 backdrop-blur-sm transition-opacity" onclick="closeModal()"></div>
+        <div class="relative w-full max-w-xl bg-[#0F172A] border border-white/10 rounded-2xl shadow-2xl flex flex-col max-h-[90vh] animate-fade-in-up">
+            <div class="p-6 border-b border-white/10 flex justify-between items-center">
+                <h3 id="modal-title" class="text-xl font-bold text-white">Título</h3>
+                <button onclick="closeModal()" class="text-gray-400 hover:text-white">
+                    <span class="material-icons-outlined">close</span>
+                </button>
+            </div>
+            <div id="modal-content" class="p-6 overflow-y-auto text-gray-300 text-sm space-y-4">
+            </div>
+            <div class="p-6 border-t border-white/10 flex justify-end">
+                <button onclick="closeModal()" class="bg-brand-cyan text-brand-black font-bold px-6 py-2 rounded-lg hover:opacity-90 transition">Close</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // --- 1. LANGUAGE DATA ---
+        const translations = {
+            en: {
+                nav_how: "How it works",
+                nav_benefits: "Benefits",
+                hero_badge: "Early Access Open",
+                hero_title: `THE INVESTMENT PLATFORM FOR <span class="text-gradient-primary">REAL-WORLD</span> PROJECTS<br><span class="text-2xl md:text-4xl font-normal text-gray-300 normal-case block mt-4">Right from the palm of your hand</span>`,
+                hero_desc: "We transform real assets into digital opportunities. Be among the first to access high-value properties starting at $50. Blockchain Transparency.",
+                email_placeholder: "Enter your email address",
+                btn_reserve: "Reserve your spot",
+                form_disclaimer: "people are already in line.",
+                terms_prefix: "By signing up you agree to our",
+                terms_link: "Privacy Policy",
+                success_title: "You are on the list!",
+                success_sub: "We have reserved your spot.",
+                success_pos_label: "Your Current Position",
+                success_rank_up: "How to move up the rank:",
+                action_refer: "Refer Friends",
+                counter_label: "Investors Registered",
+                hero_cta_secondary: "Click here to join waitlist",
+                model_subtitle: "The Equitty Model",
+                model_title: "Tokenization in Latin America",
+                model_desc: "We democratize access to large real estate and business projects by dividing them into accessible digital shares.",
+                step1_title: "1. Asset Selection",
+                step1_desc: "EQUITTY selects high-value properties (Buildings, Commercial Centers) with proven profitability track records in LatAm.",
+                step2_title: "2. Tokenization",
+                step2_desc: "We split the property into thousands of digital tokens. Each token represents a legal fraction of ownership, accessible from $50.",
+                step3_title: "3. Profitability",
+                step3_desc: "Receive rental dividends directly to your wallet and earn capital gains when the asset appreciates in value.",
+                benefits_title: "More than an investment, <br>financial freedom.",
+                benefit1_title: "Priority Access",
+                benefit1_desc: "The best real estate assets sell out in minutes. By being on the waitlist, you get a 24-hour window to invest before the general public.",
+                benefit2_title: "Rank Up & Win",
+                benefit2_desc: "Refer friends to earn points. Top 500 users get lower fees and exclusive 'Early Founder' NFTs.",
+                benefit3_title: "24/7 Liquidity",
+                benefit3_desc: "Secondary market to sell your tokens whenever you want. No more waiting years to exit.",
+                faq_title: "Frequently Asked Questions",
+                faq1_q: "What do I receive when I invest?",
+                faq1_a: "You receive digital tokens that legally represent your share in the asset. These are stored in your digital wallet and entitle you to receive proportional economic returns.",
+                faq2_q: "Is it legally safe?",
+                faq2_a: "Yes. EQUITTY operates under a robust legal framework where every token issuance is backed by a fiduciary or corporate structure that owns the physical real asset.",
+                faq3_q: "When can I invest?",
+                faq3_a: "By joining the waitlist, you will be notified 48 hours before the public launch of the first round of assets, ensuring your chance to participate.",
+                footer_motto: "Building the financial infrastructure of the future. Transparent, secure, and borderless investment.",
+                link_props: "Properties",
+                link_secondary: "Secondary Market",
+                link_privacy: "Privacy",
+                link_terms: "Terms of Use",
+                link_risks: "Risks",
+                rights: "All rights reserved."
+            },
+            es: {
+                nav_how: "Cómo funciona",
+                nav_benefits: "Beneficios",
+                hero_badge: "Acceso Anticipado Abierto",
+                hero_title: `LA PLATAFORMA DE INVERSIÓN PARA PROYECTOS <span class="text-gradient-primary">REALES</span><br><span class="text-2xl md:text-4xl font-normal text-gray-300 normal-case block mt-4">Directamente desde la palma de tu mano</span>`,
+                hero_desc: "Transformamos activos reales en oportunidades digitales. Sé de los primeros en acceder a propiedades de alto valor desde $50. Transparencia Blockchain.",
+                email_placeholder: "Ingresa tu correo electrónico",
+                btn_reserve: "Reserva tu lugar",
+                form_disclaimer: "personas ya están en la fila.",
+                terms_prefix: "Al registrarte aceptas nuestra",
+                terms_link: "Política de Privacidad",
+                success_title: "¡Estás en la lista!",
+                success_sub: "Hemos reservado tu lugar.",
+                success_pos_label: "Tu Posición Actual",
+                success_rank_up: "Cómo subir de rango:",
+                action_refer: "Referir Amigos",
+                counter_label: "Inversores Registrados",
+                hero_cta_secondary: "Click aquí para unirte a la waitlist",
+                model_subtitle: "El Modelo Equitty",
+                model_title: "Tokenización en Latinoamérica",
+                model_desc: "Democratizamos el acceso a grandes proyectos inmobiliarios y empresariales dividiéndolos en partes digitales accesibles.",
+                step1_title: "1. Selección del Activo",
+                step1_desc: "EQUITTY selecciona propiedades de alto valor (Edificios, Centros Comerciales) con historial probado de rentabilidad en LatAm.",
+                step2_title: "2. Tokenización",
+                step2_desc: "Dividimos la propiedad en miles de tokens digitales. Cada token representa una fracción legal de la propiedad, accesible desde $50.",
+                step3_title: "3. Rentabilidad",
+                step3_desc: "Recibes dividendos por alquileres directamente en tu billetera y ganas plusvalía cuando el activo se revaloriza.",
+                benefits_title: "Más que una inversión, <br>libertad financiera.",
+                benefit1_title: "Acceso Prioritario",
+                benefit1_desc: "Los mejores activos inmobiliarios se agotan en minutos. Al estar en la lista, obtienes una ventana de 24 horas para invertir antes que el público general.",
+                benefit2_title: "Sube de Nivel y Gana",
+                benefit2_desc: "Refiere amigos para ganar puntos. El Top 500 obtiene menores comisiones y NFTs exclusivos 'Early Founder'.",
+                benefit3_title: "Liquidez 24/7",
+                benefit3_desc: "Mercado secundario para vender tus tokens cuando quieras. Olvídate de esperar años para vender.",
+                faq_title: "Preguntas Frecuentes",
+                faq1_q: " ¿Qué recibo al invertir?",
+                faq1_a: "Recibes tokens digitales que representan legalmente tu participación en el activo. Estos se almacenan en tu billetera digital y te dan derecho a recibir rendimientos económicos proporcionales.",
+                faq2_q: "¿Es seguro legalmente?",
+                faq2_a: "Sí. EQUITTY opera bajo un marco legal robusto donde cada emisión de tokens está respaldada por una estructura fiduciaria o societaria que posee el activo físico real.",
+                faq3_q: "¿Cuándo podré invertir?",
+                faq3_a: "Al unirte a la lista de espera, serás notificado 48 horas antes del lanzamiento público de la primera ronda de activos, asegurando tu oportunidad de participar.",
+                footer_motto: "Construimos la infraestructura financiera del futuro. Inversión transparente, segura y sin fronteras.",
+                link_props: "Propiedades",
+                link_secondary: "Mercado Secundario",
+                link_privacy: "Privacidad",
+                link_terms: "Términos de Uso",
+                link_risks: "Riesgos",
+                rights: "Todos los derechos reservados."
+            }
+        };
+
+        // --- 2. LANGUAGE SWITCH LOGIC ---
+        const toggle = document.getElementById('lang-toggle');
+        const esLabel = document.getElementById('lang-label-es');
+        const enLabel = document.getElementById('lang-label-en');
+
+        // Initial state (English is checked/default)
+        toggle.checked = true; 
+        updateLanguage('en');
+
+        toggle.addEventListener('change', () => {
+            if (toggle.checked) {
+                updateLanguage('en');
+                esLabel.classList.replace('text-white', 'text-gray-500');
+                enLabel.classList.replace('text-gray-500', 'text-white');
+            } else {
+                updateLanguage('es');
+                enLabel.classList.replace('text-white', 'text-gray-500');
+                esLabel.classList.replace('text-gray-500', 'text-white');
+            }
+        });
+
+        function updateLanguage(lang) {
+            document.querySelectorAll('[data-i18n]').forEach(el => {
+                const key = el.getAttribute('data-i18n');
+                if (translations[lang][key]) {
+                    el.innerHTML = translations[lang][key];
+                }
+            });
+            document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
+                const key = el.getAttribute('data-i18n-placeholder');
+                if (translations[lang][key]) {
+                    el.placeholder = translations[lang][key];
+                }
+            });
+        }
+
+        // Mobile toggle logic
+        let currentMobileLang = 'en';
+        function toggleLanguageMobile() {
+            const btnText = document.getElementById('mobile-lang-text');
+            if (currentMobileLang === 'en') {
+                currentMobileLang = 'es';
+                updateLanguage('es');
+                btnText.textContent = "Switch to English";
+            } else {
+                currentMobileLang = 'en';
+                updateLanguage('en');
+                btnText.textContent = "Switch to Español";
+            }
+        }
+
+        // --- 3. MODAL CONTENT ---
+        const modalContent = {
+            "Privacidad": "<p>EQUITTY collects your email address solely for waitlist management.</p><p>Your data is encrypted and not shared with third parties.</p>",
+            "Propiedades": "<p>We are currently auditing 3 residential buildings in San Salvador and 2 logistics hubs in Panama.</p>",
+            "Mercado Secundario": "<p>Our platform enables P2P trading of verified tokens, ensuring instant liquidity.</p>",
+            "Tokenomics": "<p>Security Tokens (ERC-1400 compliant). Rights to dividends and governance.</p>",
+            "Términos de Uso": "<p>Platform use restricted to 18+. By joining, you accept transactional communications.</p>",
+            "Riesgos": "<p>All investments carry risks, including capital loss. Invest responsibly.</p>"
+        };
+
+        // --- 4. COUNTER LOGIC (STATIC + ON SUBMIT) ---
+        // Initial Count
+        const initialCount = 4569;
+        
+        function updateCounters(value) {
+            // Update Desktop Hero Counter
+            const heroCounter = document.getElementById('live-counter');
+            if(heroCounter) heroCounter.innerText = value.toLocaleString();
+            
+            // Update Mobile Hero Counter (NEW)
+            const mobileCounter = document.getElementById('mobile-live-counter');
+            if(mobileCounter) mobileCounter.innerText = value.toLocaleString();
+            
+            // Update Form Text Counter
+            const formCounter = document.getElementById('form-counter-text');
+            if(formCounter) formCounter.innerText = value.toLocaleString();
+
+            // Update Success Dashboard Counter
+            const successCounter = document.getElementById('success-counter-text');
+            if(successCounter) successCounter.innerText = "#" + (value + 1).toLocaleString(); // User is Next
+        }
+        
+        // Initialize
+        updateCounters(initialCount);
+
+        // --- 5. FOCUS INPUT ACTION ---
+        function focusOnInput() {
+            const inputContainer = document.getElementById('input-container');
+            const inputField = document.getElementById('email');
+            inputContainer.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            setTimeout(() => {
+                inputField.focus();
+                inputContainer.classList.add('input-highlight');
+                setTimeout(() => inputContainer.classList.remove('input-highlight'), 2000);
+            }, 500);
+        }
+
+        // --- 6. FORM SUBMIT ---
+        function submitWaitlist(e) {
+            e.preventDefault();
+            const btn = document.getElementById('submit-btn');
+            const emailInput = document.getElementById('email');
+
+            if(!emailInput.value) return;
+
+            btn.disabled = true;
+            // Spinner
+            btn.innerHTML = `<svg class="animate-spin h-5 w-5 text-brand-black" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"><circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle><path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path></svg>`;
+
+            setTimeout(() => {
+                // Update Counters on Success
+                const newCount = 4570;
+                updateCounters(newCount);
+                
+                // Show Success Dashboard
+                document.getElementById('waitlist-form').style.display = 'none';
+                
+                // Hide mobile counter to clean up view
+                const mobileCounterDiv = document.querySelector('.lg\\:hidden.mb-6');
+                if(mobileCounterDiv) mobileCounterDiv.style.display = 'none';
+
+                const successDash = document.getElementById('success-dashboard');
+                successDash.classList.remove('hidden');
+                
+                // Update the specific text in dashboard to reflect the new position
+                const successCounterText = document.getElementById('success-counter-text');
+                successCounterText.innerText = "#" + newCount.toLocaleString();
+
+            }, 1500);
+        }
+
+        // --- 7. STANDARD UTILS (Scroll Reveal, Modal, etc) ---
+        document.addEventListener('DOMContentLoaded', () => {
+            const reveals = document.querySelectorAll('.reveal');
+            const revealOnScroll = () => {
+                const windowHeight = window.innerHeight;
+                reveals.forEach((reveal) => {
+                    const elementTop = reveal.getBoundingClientRect().top;
+                    if (elementTop < windowHeight - 100) reveal.classList.add('active');
+                });
+            };
+            window.addEventListener('scroll', revealOnScroll);
+            revealOnScroll();
+        });
+
+        window.addEventListener('scroll', () => {
+            const nav = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                nav.classList.add('bg-brand-black/90', 'backdrop-blur-md', 'shadow-lg');
+            } else {
+                nav.classList.remove('bg-brand-black/90', 'backdrop-blur-md', 'shadow-lg');
+            }
+        });
+
+        function openModal(topic) {
+            const modal = document.getElementById('info-modal');
+            const title = document.getElementById('modal-title');
+            const content = document.getElementById('modal-content');
+            title.textContent = topic;
+            content.innerHTML = modalContent[topic] || "<p>Info coming soon.</p>";
+            modal.classList.remove('hidden');
+            document.body.classList.add('overflow-hidden');
+        }
+
+        function closeModal() {
+            const modal = document.getElementById('info-modal');
+            modal.classList.add('hidden');
+            document.body.classList.remove('overflow-hidden');
+        }
+
+        function toggleAccordion(id) {
+            const content = document.getElementById(id);
+            const icon = document.getElementById(`icon-${id}`);
+            if (content.classList.contains('hidden')) {
+                content.classList.remove('hidden');
+                icon.textContent = 'remove';
+                icon.classList.add('text-brand-cyan');
+            } else {
+                content.classList.add('hidden');
+                icon.textContent = 'add';
+                icon.classList.remove('text-brand-cyan');
+            }
+        }
+
+        function toggleMobileMenu() {
+            document.getElementById('mobile-menu').classList.toggle('hidden');
+        }
+
+        document.onkeydown = function(evt) {
+            if (evt.keyCode == 27) closeModal();
+        };
+    </script>
+</body>
+</html>
