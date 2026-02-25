@@ -1,60 +1,85 @@
 'use client'
 
-const CALENDLY_URL = process.env.NEXT_PUBLIC_CALENDLY_URL ?? 'https://calendly.com/tu-usuario/demo'
+const CALENDLY_URL =
+    process.env.NEXT_PUBLIC_CALENDLY_URL ?? 'https://calendly.com/tu-usuario/demo'
 
 const plans = [
   {
-    name: 'Básico',
-    description: 'Para pequeñas flotas',
-    price: '$29',
+    name: 'Starter',
+    description: 'Para agencias pequeñas',
+    price: '$49',
     period: '/mes',
     features: [
-      'Hasta 5 vehículos',
-      'Facturación DTE básica',
-      'Gestión de reservas simple',
+      '1–5 vehículos',
+      'Hasta 100 DTE / mes',
+      'DTE adicional: $0.15 c/u',
+      '1 sucursal',
+      'Control de usuarios',
+      'Gestión de reservas básica',
+      'Contratos PDF automáticos',
       'Soporte por email',
     ],
     cta: 'Elegir Plan',
-    ctaHref: CALENDLY_URL,
+    ctaHref: '#',
     highlighted: false,
     checkColor: 'text-green-500',
-    checkIcon: 'check',
   },
   {
     name: 'Pro',
     description: 'Para flotas medianas',
-    price: '$79',
+    price: '$99',
     period: '/mes',
     features: [
-      'Hasta 25 vehículos',
+      '6–20 vehículos',
+      'Hasta 400 DTE / mes',
+      'DTE adicional: $0.12 c/u',
       'Gestión de flota completa',
-      'Facturación DTE ilimitada',
-      'Reportes avanzados',
+      '2 sucursales',
+      'Control de usuarios',
+      'Reportes financieros avanzados',
       'Soporte prioritario',
     ],
     cta: 'Elegir Plan',
-    ctaHref: CALENDLY_URL,
+    ctaHref: '#',
     highlighted: true,
     checkColor: 'text-primary',
-    checkIcon: 'check_circle',
+  },
+  {
+    name: 'Business',
+    description: 'Para agencias en crecimiento',
+    price: '$179',
+    period: '/mes',
+    features: [
+      '21–60 vehículos',
+      'Hasta 1,000 DTE / mes',
+      'DTE adicional: $0.08 c/u',
+      'Reportes ejecutivos',
+      '3 sucursales',
+      'Control de usuarios',
+      'Soporte prioritario + onboarding',
+    ],
+    cta: 'Elegir Plan',
+    ctaHref: '#',
+    highlighted: false,
+    checkColor: 'text-green-500',
   },
   {
     name: 'Enterprise',
     description: 'Para grandes agencias',
-    price: 'Custom',
-    period: '',
+    price: '$299+',
+    period: '/mes',
     features: [
       'Flota ilimitada',
-      'DTE Ilimitado + Multi-sucursal',
-      'Integraciones API a medida',
+      'DTE ilimitado',
+      'Multi-sucursal',
+      'Integraciones API',
       'Gestor de cuenta dedicado',
-      'SLA de soporte garantizado',
+      'SLA garantizado',
     ],
     cta: 'Contactar Ventas',
     ctaHref: '#',
     highlighted: false,
     checkColor: 'text-green-500',
-    checkIcon: 'check',
   },
 ]
 
@@ -71,7 +96,7 @@ export function PricingSection() {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-start">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 items-stretch">
           {plans.map((plan) => (
             <div
               key={plan.name}
@@ -114,14 +139,18 @@ export function PricingSection() {
               </ul>
 
               <a
-                href={plan.ctaHref}
-                target={plan.ctaHref.startsWith('http') ? '_blank' : undefined}
-                rel={plan.ctaHref.startsWith('http') ? 'noopener noreferrer' : undefined}
-                className={`w-full block text-center py-3 rounded-lg font-semibold transition ${
-                  plan.highlighted
-                    ? 'bg-primary hover:bg-primary-hover text-white shadow-lg shadow-blue-500/30'
-                    : 'bg-gray-50 dark:bg-gray-800 hover:bg-gray-100 dark:hover:bg-gray-700 text-primary border border-gray-200 dark:border-gray-600'
-                }`}
+                  href={
+                    `https://wa.me/50312345678?text=${encodeURIComponent(
+                            `Hola, quiero información sobre el plan ${plan.name} de Rentora`
+                        )}`
+                  }
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={`w-full block text-center py-3 rounded-lg font-semibold transition ${
+                      plan.highlighted
+                          ? 'bg-primary hover:bg-primary-hover text-white shadow-lg shadow-blue-500/30'
+                          : 'bg-gray-50 dark:bg-gray-800 hover:bg-gray-100 dark:hover:bg-gray-700 text-primary border border-gray-200 dark:border-gray-600'
+                  }`}
               >
                 {plan.cta}
               </a>

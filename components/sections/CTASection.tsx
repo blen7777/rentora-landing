@@ -37,12 +37,7 @@ export function CTASection() {
           >
             Agendar Demo Gratuita
           </a>
-          <a
-            href="mailto:hola@turentadora.sv"
-            className="inline-flex items-center justify-center bg-white/10 hover:bg-white/20 text-white border border-white/20 font-semibold py-4 px-8 rounded-lg backdrop-blur-sm transition-all duration-200 text-base"
-          >
-            Contactar Ventas
-          </a>
+
         </div>
       </div>
     </section>
