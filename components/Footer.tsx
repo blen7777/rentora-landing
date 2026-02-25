@@ -4,7 +4,7 @@ export function Footer() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col sm:flex-row justify-between items-center py-6 gap-4">
           <p className="text-sm text-gray-400">
-            © {new Date().getFullYear()} Tu Rentadora. Todos los derechos reservados.
+            © {new Date().getFullYear()} Tu Rentora. Todos los derechos reservados.
           </p>
           <div className="flex space-x-6">
             <a href="https://www.facebook.com/profile.php?id=61588286986919" aria-label="Facebook" className="text-gray-400 hover:text-gray-500 transition">
