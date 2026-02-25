@@ -102,7 +102,7 @@ export function PricingSection() {
               key={plan.name}
               className={`bg-white dark:bg-surface-dark rounded-2xl p-8 flex flex-col relative transition-transform hover:-translate-y-1 duration-300 ${
                 plan.highlighted
-                  ? 'shadow-xl shadow-blue-500/10 border-2 border-primary scale-105 z-10'
+                  ? 'shadow-xl border-2 border-primary z-10'
                   : 'shadow-card border border-gray-100 dark:border-gray-700'
               }`}
             >
@@ -137,19 +137,19 @@ export function PricingSection() {
                   </li>
                 ))}
               </ul>
-
               <a
-                  href={
-                    `https://wa.me/50312345678?text=${encodeURIComponent(
-                            `Hola, quiero información sobre el plan ${plan.name} de Rentora`
-                        )}`
-                  }
+                  href={`https://wa.me/50376471451?text=${encodeURIComponent(
+                      `Hola 👋 Estoy interesado en el plan ${plan.name} de Rentora.
+                  ¿Podrían enviarme más información y detalles de implementación?`
+                  )}`}
                   target="_blank"
                   rel="noopener noreferrer"
                   className={`w-full block text-center py-3 rounded-lg font-semibold transition ${
-                      plan.highlighted
-                          ? 'bg-primary hover:bg-primary-hover text-white shadow-lg shadow-blue-500/30'
-                          : 'bg-gray-50 dark:bg-gray-800 hover:bg-gray-100 dark:hover:bg-gray-700 text-primary border border-gray-200 dark:border-gray-600'
+                      plan.name === 'Enterprise'
+                          ? 'bg-green-600 hover:bg-green-700 text-white shadow-lg'
+                          : plan.highlighted
+                              ? 'bg-primary hover:bg-primary-hover text-white shadow-lg shadow-blue-500/30'
+                              : 'bg-gray-50 dark:bg-gray-800 hover:bg-gray-100 dark:hover:bg-gray-700 text-primary border border-gray-200 dark:border-gray-600'
                   }`}
               >
                 {plan.cta}
