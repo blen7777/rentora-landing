@@ -47,6 +47,7 @@ export function Navbar() {
           <div className="hidden md:flex space-x-1">
             {[
               { label: 'Características', href: '#caracteristicas' },
+              { label: 'Módulos', href: '#modulos' },
               { label: 'Facturación DTE', href: '#dte' },
               { label: 'Precios', href: '#precios' },
             ].map((link) => (

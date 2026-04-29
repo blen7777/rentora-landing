@@ -8,7 +8,7 @@ const plans = [
     name: 'Starter',
     description: 'Para agencias pequeñas',
     price: '$49',
-    period: '/mes',
+    period: '+ IVA /mes',
     features: [
       '1–5 vehículos',
       'Hasta 100 DTE / mes',
@@ -17,7 +17,7 @@ const plans = [
       'Control de usuarios',
       'Gestión de reservas básica',
       'Contratos PDF automáticos',
-      'Soporte por email',
+      'Soporte por email, respuesta en 24–48h hábiles',
     ],
     cta: 'Elegir Plan',
     ctaHref: '#',
@@ -28,7 +28,7 @@ const plans = [
     name: 'Pro',
     description: 'Para flotas medianas',
     price: '$99',
-    period: '/mes',
+    period: '+ IVA /mes',
     features: [
       '6–20 vehículos',
       'Hasta 400 DTE / mes',
@@ -37,7 +37,7 @@ const plans = [
       '2 sucursales',
       'Control de usuarios',
       'Reportes financieros avanzados',
-      'Soporte prioritario',
+      'Soporte prioritario, respuesta en 12–24h hábiles',
     ],
     cta: 'Elegir Plan',
     ctaHref: '#',
@@ -48,15 +48,15 @@ const plans = [
     name: 'Business',
     description: 'Para agencias en crecimiento',
     price: '$179',
-    period: '/mes',
+    period: '+ IVA /mes',
     features: [
       '21–60 vehículos',
-      'Hasta 1,000 DTE / mes',
+      'Hasta 700 DTE / mes',
       'DTE adicional: $0.08 c/u',
       'Reportes ejecutivos',
       '3 sucursales',
       'Control de usuarios',
-      'Soporte prioritario + onboarding',
+      'Soporte prioritario avanzado, respuesta en 4–8h hábiles',
     ],
     cta: 'Elegir Plan',
     ctaHref: '#',
@@ -67,14 +67,14 @@ const plans = [
     name: 'Enterprise',
     description: 'Para grandes agencias',
     price: '$299+',
-    period: '/mes',
+    period: '+ IVA /mes',
     features: [
       'Flota ilimitada',
       'DTE ilimitado',
       'Multi-sucursal',
       'Integraciones API',
       'Gestor de cuenta dedicado',
-      'SLA garantizado',
+      'SLA garantizado, respuesta desde 1h',
     ],
     cta: 'Contactar Ventas',
     ctaHref: '#',
@@ -157,6 +157,10 @@ export function PricingSection() {
             </div>
           ))}
         </div>
+
+        <p className="mt-8 text-center text-sm text-secondary-text-light dark:text-secondary-text-dark max-w-3xl mx-auto">
+          La integración del módulo DTE con el Ministerio de Hacienda tiene un costo adicional de pago único.
+        </p>
       </div>
     </section>
   )
