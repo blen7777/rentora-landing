@@ -1,9 +1,23 @@
 'use client'
 
-const CALENDLY_URL =
-    process.env.NEXT_PUBLIC_CALENDLY_URL ?? 'https://calendly.com/tu-usuario/demo'
-
 const plans = [
+  {
+    name: 'Free Trial',
+    description: 'Acceso temporal por 14 dias',
+    price: '$0',
+    period: '/ 14 dias',
+    features: [
+      'Prueba gratuita de 14 dias',
+      'Acceso temporal por 14 dias',
+      'Hasta 5 vehiculos',
+      '1 sucursal',
+      'Prueba guiada del producto',
+    ],
+    cta: 'Comenzar Gratis',
+    ctaHref: 'https://platform.rentora-app.com/signup',
+    highlighted: false,
+    checkColor: 'text-green-500',
+  },
   {
     name: 'Starter',
     description: 'Para agencias pequeñas',
@@ -84,6 +98,16 @@ const plans = [
 ]
 
 export function PricingSection() {
+  const getPlanHref = (plan: (typeof plans)[number]) => {
+    if (plan.ctaHref !== '#') {
+      return plan.ctaHref
+    }
+
+    return `https://wa.me/50376471451?text=${encodeURIComponent(
+      `Hola 👋 Estoy interesado en el plan ${plan.name} de Rentora. ¿Podrían enviarme más información y detalles de implementación?`
+    )}`
+  }
+
   return (
     <section id="precios" className="py-20 bg-gray-50 dark:bg-background-dark/50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -96,7 +120,7 @@ export function PricingSection() {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 items-stretch">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-8 items-stretch">
           {plans.map((plan) => (
             <div
               key={plan.name}
@@ -138,19 +162,16 @@ export function PricingSection() {
                 ))}
               </ul>
               <a
-                  href={`https://wa.me/50376471451?text=${encodeURIComponent(
-                      `Hola 👋 Estoy interesado en el plan ${plan.name} de Rentora.
-                  ¿Podrían enviarme más información y detalles de implementación?`
-                  )}`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className={`w-full block text-center py-3 rounded-lg font-semibold transition ${
-                      plan.name === 'Enterprise'
-                          ? 'bg-green-600 hover:bg-green-700 text-white shadow-lg'
-                          : plan.highlighted
-                              ? 'bg-primary hover:bg-primary-hover text-white shadow-lg shadow-blue-500/30'
-                              : 'bg-gray-50 dark:bg-gray-800 hover:bg-gray-100 dark:hover:bg-gray-700 text-primary border border-gray-200 dark:border-gray-600'
-                  }`}
+                href={getPlanHref(plan)}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={`w-full block text-center py-3 rounded-lg font-semibold transition ${
+                  plan.name === 'Enterprise'
+                    ? 'bg-green-600 hover:bg-green-700 text-white shadow-lg'
+                    : plan.highlighted
+                      ? 'bg-primary hover:bg-primary-hover text-white shadow-lg shadow-blue-500/30'
+                      : 'bg-gray-50 dark:bg-gray-800 hover:bg-gray-100 dark:hover:bg-gray-700 text-primary border border-gray-200 dark:border-gray-600'
+                }`}
               >
                 {plan.cta}
               </a>
