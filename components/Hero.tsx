@@ -23,7 +23,7 @@ export function Hero() {
             <h1 className="text-4xl lg:text-5xl font-extrabold tracking-tight text-gray-900 dark:text-white mb-6 leading-tight">
               Automatiza tu <br />
               <span className="text-primary">Rent a Car</span> en <br />
-              El Salvador
+              Latinoamérica
             </h1>
             <p className="text-lg text-secondary-text-light dark:text-secondary-text-dark mb-8 leading-relaxed">
               Software de gestión integral y facturación electrónica diseñado específicamente
@@ -78,7 +78,7 @@ export function Hero() {
                   <div className="w-2.5 h-2.5 rounded-full bg-green-400" />
                   <div className="flex-1 flex justify-center">
                     <div className="bg-white dark:bg-gray-700 rounded-md px-3 py-0.5 text-[10px] text-gray-400">
-                      turentadora.sv/dashboard
+                      https://platform.rentora-app.com/dashboard
                     </div>
                   </div>
                 </div>

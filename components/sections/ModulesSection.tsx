@@ -61,9 +61,6 @@ export function ModulesSection() {
               viewport={{ once: true, amount: 0.25 }}
               transition={{ duration: 0.55, ease: 'easeOut' }}
             >
-              <span className="inline-flex items-center rounded-full border border-blue-200 bg-blue-50 px-3 py-1 text-xs font-semibold uppercase tracking-wide text-primary dark:border-blue-900/60 dark:bg-blue-950/40 dark:text-blue-300">
-                Plataforma completa
-              </span>
               <h2 className="mt-5 text-3xl font-bold leading-tight text-gray-900 dark:text-white sm:text-4xl">
                 Todos los módulos clave para operar una rentadora profesional
               </h2>
