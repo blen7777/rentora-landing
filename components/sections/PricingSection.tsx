@@ -77,24 +77,6 @@ const plans = [
     highlighted: false,
     checkColor: 'text-green-500',
   },
-  {
-    name: 'Enterprise',
-    description: 'Para grandes agencias',
-    price: '$299+',
-    period: '+ IVA /mes',
-    features: [
-      'Flota ilimitada',
-      'DTE ilimitado',
-      'Multi-sucursal',
-      'Integraciones API',
-      'Gestor de cuenta dedicado',
-      'SLA garantizado, respuesta desde 1h',
-    ],
-    cta: 'Contactar Ventas',
-    ctaHref: '#',
-    highlighted: false,
-    checkColor: 'text-green-500',
-  },
 ]
 
 export function PricingSection() {
@@ -120,7 +102,7 @@ export function PricingSection() {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-8 items-stretch">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 items-stretch">
           {plans.map((plan) => (
             <div
               key={plan.name}
