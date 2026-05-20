@@ -1,0 +1,92 @@
+<svg width="1280" height="720" viewBox="0 0 1280 720" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
+  <title id="title">Rentora demo poster</title>
+  <desc id="desc">Poster para el video demo de Rentora con estilo SaaS y panel de operacion.</desc>
+  <defs>
+    <linearGradient id="bg" x1="140" y1="80" x2="1130" y2="680" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#081B3A"/>
+      <stop offset="0.52" stop-color="#0F2E73"/>
+      <stop offset="1" stop-color="#112B5D"/>
+    </linearGradient>
+    <linearGradient id="glowBlue" x1="277" y1="121" x2="471" y2="301" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#60A5FA" stop-opacity="0.65"/>
+      <stop offset="1" stop-color="#60A5FA" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="glowCyan" x1="780" y1="42" x2="1027" y2="292" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#38BDF8" stop-opacity="0.45"/>
+      <stop offset="1" stop-color="#38BDF8" stop-opacity="0"/>
+    </linearGradient>
+    <filter id="blur40" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="40"/>
+    </filter>
+    <filter id="blur24" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="24"/>
+    </filter>
+  </defs>
+
+  <rect width="1280" height="720" rx="40" fill="url(#bg)"/>
+  <rect x="0" y="0" width="1280" height="720" rx="40" fill="url(#glowBlue)" filter="url(#blur40)"/>
+  <rect x="760" y="0" width="520" height="520" rx="40" fill="url(#glowCyan)" filter="url(#blur40)"/>
+
+  <circle cx="1084" cy="118" r="96" fill="#93C5FD" fill-opacity="0.12"/>
+  <circle cx="210" cy="610" r="138" fill="#38BDF8" fill-opacity="0.08"/>
+
+  <g opacity="0.16" stroke="#EAF2FF">
+    <path d="M76 160H1204"/>
+    <path d="M76 250H1204"/>
+    <path d="M76 340H1204"/>
+    <path d="M76 430H1204"/>
+    <path d="M76 520H1204"/>
+    <path d="M76 610H1204"/>
+  </g>
+
+  <g transform="translate(76 62)">
+    <rect x="0" y="0" width="150" height="38" rx="19" fill="rgba(255,255,255,0.14)" stroke="rgba(255,255,255,0.12)"/>
+    <text x="75" y="25" text-anchor="middle" fill="#EAF2FF" font-size="16" font-family="Inter, Arial, sans-serif" font-weight="700">Rentora Demo</text>
+  </g>
+
+  <text x="76" y="208" fill="#FFFFFF" font-size="68" font-family="Inter, Arial, sans-serif" font-weight="800" letter-spacing="-1.5">Automatiza tu rent a car</text>
+  <text x="76" y="274" fill="#D8E7FF" font-size="28" font-family="Inter, Arial, sans-serif" font-weight="500">Flota, reservas, contratos, pagos y DTE en una sola plataforma SaaS</text>
+
+  <g transform="translate(78 332)">
+    <rect x="0" y="0" width="240" height="126" rx="22" fill="rgba(255,255,255,0.12)" stroke="rgba(255,255,255,0.14)"/>
+    <text x="24" y="34" fill="#9FC2FF" font-size="14" font-family="Inter, Arial, sans-serif" font-weight="700" letter-spacing="1.2">FLOTA ACTIVA</text>
+    <text x="24" y="84" fill="#FFFFFF" font-size="48" font-family="Inter, Arial, sans-serif" font-weight="800">24</text>
+    <text x="102" y="84" fill="#D8E7FF" font-size="18" font-family="Inter, Arial, sans-serif" font-weight="600">vehiculos</text>
+  </g>
+
+  <g transform="translate(338 332)">
+    <rect x="0" y="0" width="240" height="126" rx="22" fill="rgba(255,255,255,0.12)" stroke="rgba(255,255,255,0.14)"/>
+    <text x="24" y="34" fill="#9FC2FF" font-size="14" font-family="Inter, Arial, sans-serif" font-weight="700" letter-spacing="1.2">RESERVAS</text>
+    <text x="24" y="84" fill="#FFFFFF" font-size="48" font-family="Inter, Arial, sans-serif" font-weight="800">18</text>
+    <text x="102" y="84" fill="#D8E7FF" font-size="18" font-family="Inter, Arial, sans-serif" font-weight="600">activas</text>
+  </g>
+
+  <g transform="translate(598 332)">
+    <rect x="0" y="0" width="240" height="126" rx="22" fill="rgba(255,255,255,0.12)" stroke="rgba(255,255,255,0.14)"/>
+    <text x="24" y="34" fill="#9FC2FF" font-size="14" font-family="Inter, Arial, sans-serif" font-weight="700" letter-spacing="1.2">DTE EMITIDOS</text>
+    <text x="24" y="84" fill="#FFFFFF" font-size="48" font-family="Inter, Arial, sans-serif" font-weight="800">18</text>
+    <text x="102" y="84" fill="#D8E7FF" font-size="18" font-family="Inter, Arial, sans-serif" font-weight="600">hoy</text>
+  </g>
+
+  <g transform="translate(858 332)">
+    <rect x="0" y="0" width="346" height="126" rx="22" fill="rgba(255,255,255,0.10)" stroke="rgba(255,255,255,0.16)"/>
+    <text x="24" y="34" fill="#9FC2FF" font-size="14" font-family="Inter, Arial, sans-serif" font-weight="700" letter-spacing="1.2">ESTADO DE FLOTA</text>
+    <rect x="24" y="60" width="130" height="18" rx="9" fill="#22C55E" fill-opacity="0.82"/>
+    <rect x="166" y="60" width="92" height="18" rx="9" fill="#60A5FA" fill-opacity="0.82"/>
+    <rect x="270" y="60" width="52" height="18" rx="9" fill="#F59E0B" fill-opacity="0.82"/>
+    <text x="24" y="104" fill="#D8E7FF" font-size="16" font-family="Inter, Arial, sans-serif" font-weight="600">Disponible · Rentado · Mantenimiento</text>
+  </g>
+
+  <g transform="translate(884 94)">
+    <circle cx="96" cy="96" r="96" fill="rgba(255,255,255,0.12)" stroke="rgba(255,255,255,0.12)"/>
+    <circle cx="96" cy="96" r="58" fill="rgba(255,255,255,0.22)"/>
+    <path d="M80 66L136 96L80 126V66Z" fill="#FFFFFF"/>
+    <text x="96" y="216" text-anchor="middle" fill="#EAF2FF" font-size="18" font-family="Inter, Arial, sans-serif" font-weight="700">Ver demo</text>
+  </g>
+
+  <g opacity="0.85">
+    <rect x="76" y="516" width="202" height="12" rx="6" fill="#FFFFFF" fill-opacity="0.22"/>
+    <rect x="76" y="542" width="300" height="12" rx="6" fill="#FFFFFF" fill-opacity="0.16"/>
+    <rect x="76" y="568" width="240" height="12" rx="6" fill="#FFFFFF" fill-opacity="0.16"/>
+  </g>
+</svg>

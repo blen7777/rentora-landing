@@ -22,6 +22,9 @@ const config: Config = {
         'secondary-text-light': '#4B5563',
         'secondary-text-dark':  '#9CA3AF',
       },
+      fontFamily: {
+        sans: ['var(--font-inter)', 'sans-serif'],
+      },
       boxShadow: {
         soft:          '0 4px 20px -2px rgba(0, 0, 0, 0.05)',
         glow:          '0 0 15px rgba(29, 78, 216, 0.3)',

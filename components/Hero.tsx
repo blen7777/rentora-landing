@@ -1,5 +1,7 @@
 'use client'
 
+import Link from 'next/link'
+
 const CALENDLY_URL = process.env.NEXT_PUBLIC_CALENDLY_URL ?? 'https://calendly.com/tu-usuario/demo'
 
 const vehicles = [
@@ -10,85 +12,90 @@ const vehicles = [
 
 export function Hero() {
   return (
-    <section className="relative pt-32 pb-20 lg:pt-40 lg:pb-28 overflow-hidden bg-background-light dark:bg-background-dark">
-      {/* Background blobs */}
-      <div className="absolute top-0 right-0 -mr-20 -mt-20 w-96 h-96 bg-blue-100 dark:bg-blue-900/20 rounded-full blur-3xl opacity-50 pointer-events-none" />
-      <div className="absolute bottom-0 left-0 -ml-20 -mb-20 w-72 h-72 bg-indigo-100 dark:bg-indigo-900/20 rounded-full blur-3xl opacity-50 pointer-events-none" />
+    <section className="relative overflow-hidden bg-background-light pb-20 pt-32 dark:bg-background-dark lg:pb-28 lg:pt-40">
+      <div className="pointer-events-none absolute right-0 top-0 -mr-20 -mt-20 h-96 w-96 rounded-full bg-blue-100 opacity-50 blur-3xl dark:bg-blue-900/20" />
+      <div className="pointer-events-none absolute bottom-0 left-0 -ml-20 -mb-20 h-72 w-72 rounded-full bg-indigo-100 opacity-50 blur-3xl dark:bg-indigo-900/20" />
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="lg:grid lg:grid-cols-12 lg:gap-16 items-center">
-
-          {/* ── Left: Copy ── */}
-          <div className="lg:col-span-5 text-center lg:text-left mb-16 lg:mb-0">
-            <h1 className="text-4xl lg:text-5xl font-extrabold tracking-tight text-gray-900 dark:text-white mb-6 leading-tight">
-              Automatiza tu <br />
-              <span className="text-primary">Rent a Car</span> en <br />
-              Latinoamérica
+      <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div className="items-center lg:grid lg:grid-cols-12 lg:gap-16">
+          <div className="mb-16 text-center lg:col-span-5 lg:mb-0 lg:text-left">
+            <p className="text-sm font-semibold uppercase tracking-[0.24em] text-primary">
+              Rentora para rent a car
+            </p>
+            <h1 className="mb-6 text-4xl font-extrabold leading-tight tracking-tight text-gray-900 dark:text-white lg:text-5xl">
+              Automatiza y administra tu <br />
+              <span className="text-primary">rent a car</span> desde <br />
+              una sola plataforma
             </h1>
-            <p className="text-lg text-secondary-text-light dark:text-secondary-text-dark mb-8 leading-relaxed">
-              Software de gestión integral y facturación electrónica diseñado específicamente
-              para rentadoras de vehículos. Controla tu flota, gestiona reservas y cumple con Hacienda.
+            <p className="mb-8 text-lg leading-relaxed text-secondary-text-light dark:text-secondary-text-dark">
+              Rentora es una plataforma SaaS para empresas de renta de vehículos en Latinoamérica.
+              Centraliza flota, reservas, clientes, contratos, pagos, reportes y facturación DTE para operar con menos fricción y más control.
             </p>
 
-            <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+            <div className="flex flex-col gap-4 sm:flex-row lg:justify-start">
               <a
                 href={CALENDLY_URL}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="bg-primary hover:bg-primary-hover text-white px-8 py-4 rounded-lg text-base font-semibold transition shadow-xl shadow-blue-600/20 flex items-center justify-center gap-2 group"
+                className="group flex items-center justify-center gap-2 rounded-lg bg-primary px-8 py-4 text-base font-semibold text-white shadow-xl shadow-blue-600/20 transition hover:bg-primary-hover"
               >
-                Agendar Demo Gratuita
-                <svg className="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                Agendar demo gratuita
+                <svg className="h-4 w-4 transition-transform group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
                 </svg>
               </a>
               <a
-                href="#caracteristicas"
-                className="bg-white dark:bg-surface-dark border border-gray-200 dark:border-gray-700 text-gray-700 dark:text-gray-200 hover:bg-gray-50 dark:hover:bg-gray-800 px-8 py-4 rounded-lg text-base font-semibold transition flex items-center justify-center"
+                href="#demo"
+                className="flex items-center justify-center rounded-lg border border-gray-200 bg-white px-8 py-4 text-base font-semibold text-gray-700 transition hover:bg-gray-50 dark:border-gray-700 dark:bg-surface-dark dark:text-gray-200 dark:hover:bg-gray-800"
               >
-                Ver Características
+                Ver demo
               </a>
+              <Link
+                href="/que-es-rentora"
+                className="flex items-center justify-center rounded-lg border border-gray-200 bg-white px-8 py-4 text-base font-semibold text-gray-700 transition hover:bg-gray-50 dark:border-gray-700 dark:bg-surface-dark dark:text-gray-200 dark:hover:bg-gray-800"
+              >
+                ¿Qué es Rentora?
+              </Link>
             </div>
 
-            <div className="mt-8 flex items-center justify-center lg:justify-start gap-5 text-sm text-gray-500 dark:text-gray-400">
+            <div className="mt-8 flex flex-wrap items-center justify-center gap-x-5 gap-y-3 text-sm text-gray-500 dark:text-gray-400 lg:justify-start">
               <div className="flex items-center gap-1.5">
-                <CheckCircleIcon className="w-4 h-4 text-green-500" />
+                <CheckCircleIcon className="h-4 w-4 text-green-500" />
                 <span>Facturación DTE</span>
               </div>
               <div className="flex items-center gap-1.5">
-                <CheckCircleIcon className="w-4 h-4 text-green-500" />
-                <span>Soporte Local</span>
+                <CheckCircleIcon className="h-4 w-4 text-green-500" />
+                <span>Control de flota</span>
               </div>
               <div className="flex items-center gap-1.5">
-                <CheckCircleIcon className="w-4 h-4 text-green-500" />
-                <span>Sin contratos</span>
+                <CheckCircleIcon className="h-4 w-4 text-green-500" />
+                <span>Reservas centralizadas</span>
+              </div>
+              <div className="flex items-center gap-1.5">
+                <CheckCircleIcon className="h-4 w-4 text-green-500" />
+                <span>En Latinoamérica</span>
               </div>
             </div>
           </div>
 
-          {/* ── Right: Dashboard mockup ── */}
-          <div className="lg:col-span-7 relative">
-            <div className="relative bg-surface-light dark:bg-surface-dark rounded-xl shadow-2xl border border-gray-200 dark:border-gray-700 p-1 overflow-visible transform rotate-1 hover:rotate-0 transition duration-500">
-
-              {/* Browser chrome */}
-              <div className="bg-gray-50 dark:bg-gray-900/50 rounded-lg overflow-hidden">
-                <div className="h-8 bg-gray-100 dark:bg-gray-800 border-b border-gray-200 dark:border-gray-700 flex items-center px-4 space-x-2">
-                  <div className="w-2.5 h-2.5 rounded-full bg-red-400" />
-                  <div className="w-2.5 h-2.5 rounded-full bg-yellow-400" />
-                  <div className="w-2.5 h-2.5 rounded-full bg-green-400" />
-                  <div className="flex-1 flex justify-center">
-                    <div className="bg-white dark:bg-gray-700 rounded-md px-3 py-0.5 text-[10px] text-gray-400">
-                      https://platform.rentora-app.com/dashboard
+          <div className="relative lg:col-span-7">
+            <div className="relative rotate-1 overflow-visible rounded-xl border border-gray-200 bg-surface-light p-1 shadow-2xl transition duration-500 hover:rotate-0 dark:border-gray-700 dark:bg-surface-dark">
+              <div className="overflow-hidden rounded-lg bg-gray-50 dark:bg-gray-900/50">
+                <div className="flex h-8 items-center space-x-2 border-b border-gray-200 bg-gray-100 px-4 dark:border-gray-700 dark:bg-gray-800">
+                  <div className="h-2.5 w-2.5 rounded-full bg-red-400" />
+                  <div className="h-2.5 w-2.5 rounded-full bg-yellow-400" />
+                  <div className="h-2.5 w-2.5 rounded-full bg-green-400" />
+                  <div className="flex flex-1 justify-center">
+                    <div className="rounded-md bg-white px-3 py-0.5 text-[10px] text-gray-400 dark:bg-gray-700">
+                      https://app.rentora-app.com/dashboard
                     </div>
                   </div>
                 </div>
 
-                {/* Dashboard grid */}
-                <div className="grid grid-cols-12 min-h-[400px]">
-                  {/* Sidebar */}
-                  <div className="col-span-2 hidden sm:flex flex-col border-r border-gray-200 dark:border-gray-700 bg-white dark:bg-surface-dark p-3 space-y-4">
-                    <div className="h-8 w-8 bg-primary rounded-lg flex items-center justify-center mx-auto mb-2 shadow-glow">
-                      <svg className="w-4 h-4 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <div className="grid min-h-[400px] grid-cols-12">
+                  <div className="col-span-2 hidden flex-col border-r border-gray-200 bg-white p-3 space-y-4 dark:border-gray-700 dark:bg-surface-dark sm:flex">
+                    <div className="mx-auto mb-2 flex h-8 w-8 items-center justify-center rounded-lg bg-primary shadow-glow">
+                      <svg className="h-4 w-4 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 17a2 2 0 11-4 0 2 2 0 014 0zM19 17a2 2 0 11-4 0 2 2 0 014 0zM1 1h4l2.68 13.39a2 2 0 001.96 1.61h9.72a2 2 0 001.95-1.55L23 6H6" />
                       </svg>
                     </div>
@@ -99,32 +106,33 @@ export function Hero() {
                         { icon: <ReceiptIcon />, active: false },
                         { icon: <GroupIcon />, active: false },
                       ].map((item, i) => (
-                        <div key={i} className={`p-2 rounded-lg flex justify-center transition-colors ${item.active ? 'bg-blue-50 dark:bg-blue-900/30 text-primary' : 'text-gray-400 hover:bg-gray-50 dark:hover:bg-gray-800'}`}>
+                        <div
+                          key={i}
+                          className={`flex justify-center rounded-lg p-2 transition-colors ${item.active ? 'bg-blue-50 text-primary dark:bg-blue-900/30' : 'text-gray-400 hover:bg-gray-50 dark:hover:bg-gray-800'}`}
+                        >
                           {item.icon}
                         </div>
                       ))}
                     </div>
-                    <div className="mt-auto pt-3 border-t border-gray-100 dark:border-gray-800 flex justify-center">
-                      <div className="w-6 h-4 bg-blue-600 rounded-sm opacity-70 text-white text-[6px] flex items-center justify-center font-bold">SV</div>
+                    <div className="mt-auto flex justify-center border-t border-gray-100 pt-3 dark:border-gray-800">
+                      <div className="flex h-4 w-6 items-center justify-center rounded-sm bg-blue-600 text-[6px] font-bold text-white opacity-70">
+                        SV
+                      </div>
                     </div>
                   </div>
 
-                  {/* Main content */}
-                  <div className="col-span-12 sm:col-span-10 p-5 bg-gray-50/50 dark:bg-gray-900/50">
-                    {/* Stats row */}
-                    <div className="grid grid-cols-3 gap-3 mb-5">
+                  <div className="col-span-12 bg-gray-50/50 p-5 dark:bg-gray-900/50 sm:col-span-10">
+                    <div className="mb-5 grid grid-cols-3 gap-3">
                       {[
-                        { icon: <VehicleStatIcon />, iconBg: 'bg-blue-100 dark:bg-blue-900/40 text-blue-600', value: '24', label: 'Vehículos Activos', badge: '+12%' },
-                        { icon: <PaymentIcon />, iconBg: 'bg-purple-100 dark:bg-purple-900/40 text-purple-600', value: '$4.2k', label: 'Ingresos Mes', badge: '+5%' },
-                        { icon: <ReceiptStatIcon />, iconBg: 'bg-green-100 dark:bg-green-900/40 text-green-600', value: '18', label: 'DTE Emitidos', badge: null },
+                        { icon: <VehicleStatIcon />, iconBg: 'bg-blue-100 dark:bg-blue-900/40 text-blue-600', value: '24', label: 'Vehículos activos', badge: '+12%' },
+                        { icon: <PaymentIcon />, iconBg: 'bg-purple-100 dark:bg-purple-900/40 text-purple-600', value: '$4.2k', label: 'Ingresos mes', badge: '+5%' },
+                        { icon: <ReceiptStatIcon />, iconBg: 'bg-green-100 dark:bg-green-900/40 text-green-600', value: '18', label: 'DTE emitidos', badge: null },
                       ].map((stat, i) => (
-                        <div key={i} className="bg-white dark:bg-surface-dark p-4 rounded-lg shadow-sm border border-gray-100 dark:border-gray-700">
-                          <div className="flex justify-between items-start mb-2">
-                            <div className={`p-1.5 rounded-md ${stat.iconBg}`}>
-                              {stat.icon}
-                            </div>
+                        <div key={i} className="rounded-lg border border-gray-100 bg-white p-4 shadow-sm dark:border-gray-700 dark:bg-surface-dark">
+                          <div className="mb-2 flex items-start justify-between">
+                            <div className={`rounded-md p-1.5 ${stat.iconBg}`}>{stat.icon}</div>
                             {stat.badge && (
-                              <span className="text-[10px] font-semibold text-green-600 bg-green-50 dark:bg-green-900/20 px-1.5 py-0.5 rounded">
+                              <span className="rounded bg-green-50 px-1.5 py-0.5 text-[10px] font-semibold text-green-600 dark:bg-green-900/20">
                                 {stat.badge}
                               </span>
                             )}
@@ -135,25 +143,24 @@ export function Hero() {
                       ))}
                     </div>
 
-                    {/* Fleet list */}
-                    <div className="bg-white dark:bg-surface-dark rounded-lg shadow-sm border border-gray-100 dark:border-gray-700 p-4">
-                      <div className="flex justify-between items-center mb-3">
-                        <h3 className="text-sm font-bold text-gray-800 dark:text-white">Estado de Flota</h3>
-                        <button className="text-[10px] bg-primary text-white px-2 py-1 rounded font-medium">Nuevo</button>
+                    <div className="rounded-lg border border-gray-100 bg-white p-4 shadow-sm dark:border-gray-700 dark:bg-surface-dark">
+                      <div className="mb-3 flex items-center justify-between">
+                        <h2 className="text-sm font-bold text-gray-800 dark:text-white">Estado de flota</h2>
+                        <button className="rounded bg-primary px-2 py-1 text-[10px] font-medium text-white">Nuevo</button>
                       </div>
                       <div className="space-y-2">
                         {vehicles.map((v) => (
-                          <div key={v.plate} className="flex items-center space-x-3 p-2 hover:bg-gray-50 dark:hover:bg-gray-800 rounded-lg transition-colors">
-                            <div className="w-9 h-9 rounded-md bg-gradient-to-br from-gray-100 to-gray-200 dark:from-gray-700 dark:to-gray-600 flex items-center justify-center flex-shrink-0">
-                              <svg className="w-5 h-5 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                          <div key={v.plate} className="flex items-center space-x-3 rounded-lg p-2 transition-colors hover:bg-gray-50 dark:hover:bg-gray-800">
+                            <div className="flex h-9 w-9 flex-shrink-0 items-center justify-center rounded-md bg-gradient-to-br from-gray-100 to-gray-200 dark:from-gray-700 dark:to-gray-600">
+                              <svg className="h-5 w-5 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 17a2 2 0 11-4 0 2 2 0 014 0zM19 17a2 2 0 11-4 0 2 2 0 014 0zM1 1h4l2.68 13.39a2 2 0 001.96 1.61h9.72a2 2 0 001.95-1.55L23 6H6" />
                               </svg>
                             </div>
-                            <div className="flex-1 min-w-0">
-                              <div className="text-[11px] font-bold text-gray-800 dark:text-gray-200 truncate">{v.name}</div>
+                            <div className="min-w-0 flex-1">
+                              <div className="truncate text-[11px] font-bold text-gray-800 dark:text-gray-200">{v.name}</div>
                               <div className="text-[10px] text-gray-500">{v.plate}</div>
                             </div>
-                            <span className={`px-2 py-0.5 rounded-full text-[10px] font-medium whitespace-nowrap ${v.statusClass}`}>
+                            <span className={`whitespace-nowrap rounded-full px-2 py-0.5 text-[10px] font-medium ${v.statusClass}`}>
                               {v.status}
                             </span>
                           </div>
@@ -165,32 +172,31 @@ export function Hero() {
               </div>
             </div>
 
-            {/* Floating DTE card */}
-            <div className="absolute -bottom-10 -right-4 sm:-right-8 w-60 bg-white dark:bg-gray-800 shadow-2xl rounded-xl border border-gray-200 dark:border-gray-600 p-4 z-20 animate-float">
-              <div className="flex justify-between items-center mb-3 border-b border-gray-100 dark:border-gray-700 pb-2">
+            <div className="animate-float absolute -bottom-10 -right-4 z-20 w-60 rounded-xl border border-gray-200 bg-white p-4 shadow-2xl dark:border-gray-600 dark:bg-gray-800 sm:-right-8">
+              <div className="mb-3 flex items-center justify-between border-b border-gray-100 pb-2 dark:border-gray-700">
                 <div className="flex items-center gap-1.5">
-                  <CheckCircleIcon className="w-4 h-4 text-green-600" />
-                  <span className="text-xs font-bold text-gray-700 dark:text-gray-300">DTE Aprobado</span>
+                  <CheckCircleIcon className="h-4 w-4 text-green-600" />
+                  <span className="text-xs font-bold text-gray-700 dark:text-gray-300">DTE aprobado</span>
                 </div>
-                <span className="bg-blue-50 text-blue-700 dark:bg-blue-900/50 dark:text-blue-300 text-[10px] px-2 py-0.5 rounded font-mono">
+                <span className="rounded bg-blue-50 px-2 py-0.5 font-mono text-[10px] text-blue-700 dark:bg-blue-900/50 dark:text-blue-300">
                   CCFE: 32A4...
                 </span>
               </div>
               <div className="space-y-2">
                 {[70, 50].map((w, i) => (
-                  <div key={i} className="flex justify-between items-center">
-                    <div className={`h-2 bg-gray-200 dark:bg-gray-600 rounded`} style={{ width: `${w}%` }} />
-                    <div className="h-2 w-8 bg-gray-200 dark:bg-gray-600 rounded" />
+                  <div key={i} className="flex items-center justify-between">
+                    <div className="h-2 rounded bg-gray-200" style={{ width: `${w}%` }} />
+                    <div className="h-2 w-8 rounded bg-gray-200" />
                   </div>
                 ))}
                 {[80, 60].map((w, i) => (
-                  <div key={i} className="flex justify-between items-center">
-                    <div className="h-2 bg-gray-100 dark:bg-gray-700 rounded" style={{ width: `${w}%` }} />
-                    <div className="h-2 w-10 bg-gray-100 dark:bg-gray-700 rounded" />
+                  <div key={i} className="flex items-center justify-between">
+                    <div className="h-2 rounded bg-gray-100 dark:bg-gray-700" style={{ width: `${w}%` }} />
+                    <div className="h-2 w-10 rounded bg-gray-100 dark:bg-gray-700" />
                   </div>
                 ))}
-                <div className="pt-2 border-t border-dashed border-gray-200 dark:border-gray-600 flex justify-between items-end">
-                  <span className="text-[10px] text-gray-400">Total a Pagar</span>
+                <div className="flex items-end justify-between border-t border-dashed border-gray-200 pt-2 dark:border-gray-600">
+                  <span className="text-[10px] text-gray-400">Total a pagar</span>
                   <span className="text-sm font-bold text-gray-900 dark:text-white">$150.00</span>
                 </div>
               </div>
@@ -202,32 +208,38 @@ export function Hero() {
   )
 }
 
-/* ── Icon helpers ── */
 function CheckCircleIcon({ className }: { className?: string }) {
   return (
-    <svg className={className ?? 'w-4 h-4'} fill="none" viewBox="0 0 24 24" stroke="currentColor">
+    <svg className={className ?? 'h-4 w-4'} fill="none" viewBox="0 0 24 24" stroke="currentColor">
       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
     </svg>
   )
 }
+
 function DashboardIcon() {
-  return <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z" /></svg>
+  return <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z" /></svg>
 }
+
 function CalendarIcon() {
-  return <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" /></svg>
+  return <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" /></svg>
 }
+
 function ReceiptIcon() {
-  return <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" /></svg>
+  return <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" /></svg>
 }
+
 function GroupIcon() {
-  return <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z" /></svg>
+  return <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z" /></svg>
 }
+
 function VehicleStatIcon() {
-  return <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 17a2 2 0 11-4 0 2 2 0 014 0zM19 17a2 2 0 11-4 0 2 2 0 014 0zM1 1h4l2.68 13.39a2 2 0 001.96 1.61h9.72a2 2 0 001.95-1.55L23 6H6" /></svg>
+  return <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 17a2 2 0 11-4 0 2 2 0 014 0zM19 17a2 2 0 11-4 0 2 2 0 014 0zM1 1h4l2.68 13.39a2 2 0 001.96 1.61h9.72a2 2 0 001.95-1.55L23 6H6" /></svg>
 }
+
 function PaymentIcon() {
-  return <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 9V7a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2m2 4h10a2 2 0 002-2v-6a2 2 0 00-2-2H9a2 2 0 00-2 2v6a2 2 0 002 2zm7-5a2 2 0 11-4 0 2 2 0 014 0z" /></svg>
+  return <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 9V7a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2m2 4h10a2 2 0 002-2v-6a2 2 0 00-2-2H9a2 2 0 00-2 2v6a2 2 0 002 2zm7-5a2 2 0 11-4 0 2 2 0 014 0z" /></svg>
 }
+
 function ReceiptStatIcon() {
-  return <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" /></svg>
+  return <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" /></svg>
 }

@@ -1,7 +1,8 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import Image from 'next/image'
+import Link from 'next/link'
 
 const CALENDLY_URL = process.env.NEXT_PUBLIC_CALENDLY_URL ?? 'https://calendly.com/blen7777/30min'
 
@@ -15,6 +16,7 @@ export function Navbar() {
       document.documentElement.classList.add('dark')
       setIsDark(true)
     }
+
     const onScroll = () => setScrolled(window.scrollY > 10)
     window.addEventListener('scroll', onScroll)
     return () => window.removeEventListener('scroll', onScroll)
@@ -30,26 +32,25 @@ export function Navbar() {
   return (
     <nav className={`fixed w-full z-50 bg-surface-light/90 dark:bg-surface-dark/90 backdrop-blur-md border-b border-gray-200 dark:border-gray-700 transition-all duration-300 ${scrolled ? 'shadow-sm' : ''}`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between h-16 items-center">
+        <div className="flex h-16 items-center justify-between">
+          <Link href="/" className="flex-shrink-0 flex items-center gap-2">
+            <Image
+              src="/images/logo.png"
+              alt="Rentora, software SaaS para rentadoras de vehículos"
+              width={180}
+              height={60}
+              className="dark:invert-0 invert"
+              priority
+            />
+          </Link>
 
-          {/* Logo */}
-          <div className="flex-shrink-0 flex items-center gap-2">
-              <Image
-                  src="/images/logo.png"
-                  alt="Rentora"
-                  width={180}
-                  height={60}
-                  className="dark:invert-0 invert"
-              />
-          </div>
-
-          {/* Desktop links */}
-          <div className="hidden md:flex space-x-1">
+          <div className="hidden md:flex items-center space-x-1">
             {[
-              { label: 'Características', href: '#caracteristicas' },
-              { label: 'Módulos', href: '#modulos' },
-              { label: 'Facturación DTE', href: '#dte' },
-              { label: 'Precios', href: '#precios' },
+              { label: '¿Qué es Rentora?', href: '/que-es-rentora' },
+              { label: 'Demo', href: '/#demo' },
+              { label: 'Características', href: '/#caracteristicas' },
+              { label: 'Módulos', href: '/#modulos' },
+              { label: 'Precios', href: '/#precios' },
             ].map((link) => (
               <a
                 key={link.label}
@@ -61,7 +62,6 @@ export function Navbar() {
             ))}
           </div>
 
-          {/* Actions */}
           <div className="flex items-center space-x-3">
             <button
               onClick={toggleTheme}
@@ -76,21 +76,12 @@ export function Navbar() {
               rel="noopener noreferrer"
               className="bg-primary hover:bg-primary-hover text-white px-5 py-2 rounded-full text-sm font-medium transition shadow-lg shadow-blue-500/30"
             >
-              Acceder
+              Agendar demo
             </a>
           </div>
         </div>
       </div>
     </nav>
-  )
-}
-
-function CarIcon({ className }: { className?: string }) {
-  return (
-    <svg className={className} fill="none" viewBox="0 0 24 24" stroke="currentColor">
-      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 17a2 2 0 11-4 0 2 2 0 014 0zM19 17a2 2 0 11-4 0 2 2 0 014 0z" />
-      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16V6a1 1 0 00-1-1H4a1 1 0 00-1 1v10l2 1h6l2-1zM5 16V8h7v8M13 6l2 4h4l1 1v5h-2" />
-    </svg>
   )
 }
 
