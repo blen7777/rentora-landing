@@ -3,17 +3,16 @@
 const plans = [
   {
     name: 'Free Trial',
-    description: 'Acceso temporal por 14 dias',
+    description: 'Prueba guiada por 14 días',
     price: '$0',
-    period: '/ 14 dias',
+    period: '/ 14 días',
     features: [
-      'Prueba gratuita de 14 dias',
-      'Acceso temporal por 14 dias',
-      'Hasta 5 vehiculos',
+      'Acceso temporal por 14 días',
+      'Hasta 5 vehículos',
       '1 sucursal',
-      'Prueba guiada del producto',
+      'Recorrido guiado por la plataforma',
     ],
-    cta: 'Comenzar Gratis',
+    cta: 'Comenzar gratis',
     ctaHref: 'https://platform.rentora-app.com/signup',
     highlighted: false,
     checkColor: 'text-green-500',
@@ -29,11 +28,11 @@ const plans = [
       'DTE adicional: $0.15 c/u',
       '1 sucursal',
       'Control de usuarios',
-      'Gestión de reservas básica',
+      'Reservas básicas',
       'Contratos PDF automáticos',
-      'Soporte por email, respuesta en 24–48h hábiles',
+      'Soporte por email en 24–48h hábiles',
     ],
-    cta: 'Elegir Plan',
+    cta: 'Elegir plan',
     ctaHref: '#',
     highlighted: false,
     checkColor: 'text-green-500',
@@ -51,9 +50,9 @@ const plans = [
       '2 sucursales',
       'Control de usuarios',
       'Reportes financieros avanzados',
-      'Soporte prioritario, respuesta en 12–24h hábiles',
+      'Soporte prioritario en 12–24h hábiles',
     ],
-    cta: 'Elegir Plan',
+    cta: 'Elegir plan',
     ctaHref: '#',
     highlighted: true,
     checkColor: 'text-primary',
@@ -70,9 +69,9 @@ const plans = [
       'Reportes ejecutivos',
       '3 sucursales',
       'Control de usuarios',
-      'Soporte prioritario avanzado, respuesta en 4–8h hábiles',
+      'Soporte prioritario avanzado en 4–8h hábiles',
     ],
-    cta: 'Elegir Plan',
+    cta: 'Elegir plan',
     ctaHref: '#',
     highlighted: false,
     checkColor: 'text-green-500',
@@ -86,73 +85,75 @@ export function PricingSection() {
     }
 
     return `https://wa.me/50376471451?text=${encodeURIComponent(
-      `Hola 👋 Estoy interesado en el plan ${plan.name} de Rentora. ¿Podrían enviarme más información y detalles de implementación?`
+      `Hola, estoy interesado en el plan ${plan.name} de Rentora. ¿Podrían enviarme más información e indicarme cómo implementar la plataforma en mi rent a car?`
     )}`
   }
 
   return (
-    <section id="precios" className="py-20 bg-gray-50 dark:bg-background-dark/50">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16">
-          <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-4">
-            Planes y Precios
+    <section id="precios" className="bg-gray-50 py-20 dark:bg-background-dark/50">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div className="mb-16 text-center">
+          <p className="text-sm font-semibold uppercase tracking-[0.24em] text-primary">
+            Planes
+          </p>
+          <h2 className="mt-4 text-3xl font-bold text-gray-900 dark:text-white">
+            Elige el plan que mejor se adapte al tamaño de tu flota
           </h2>
-          <p className="text-lg text-secondary-text-light dark:text-secondary-text-dark max-w-2xl mx-auto">
-            Elige el plan que mejor se adapte al tamaño de tu flota y necesidades de facturación.
+          <p className="mx-auto mt-4 max-w-2xl text-lg text-secondary-text-light dark:text-secondary-text-dark">
+            Diseñado para rentadoras que quieren crecer con una operación ordenada y una facturación más eficiente.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 items-stretch">
+        <div className="grid grid-cols-1 items-stretch gap-8 sm:grid-cols-2 lg:grid-cols-4">
           {plans.map((plan) => (
             <div
               key={plan.name}
-              className={`bg-white dark:bg-surface-dark rounded-2xl p-8 flex flex-col relative transition-transform hover:-translate-y-1 duration-300 ${
+              className={`relative flex flex-col rounded-2xl p-8 transition-transform duration-300 hover:-translate-y-1 ${
                 plan.highlighted
-                  ? 'shadow-xl border-2 border-primary z-10'
-                  : 'shadow-card border border-gray-100 dark:border-gray-700'
-              }`}
+                  ? 'z-10 border-2 border-primary shadow-xl'
+                  : 'border border-gray-100 shadow-card dark:border-gray-700'
+              } bg-white dark:bg-surface-dark`}
             >
               {plan.highlighted && (
-                <div className="absolute top-0 right-0 bg-primary text-white text-xs font-bold px-3 py-1 rounded-bl-lg rounded-tr-xl">
+                <div className="absolute right-0 top-0 rounded-bl-lg rounded-tr-xl bg-primary px-3 py-1 text-xs font-bold text-white">
                   RECOMENDADO
                 </div>
               )}
 
               <div className="mb-6">
                 <h3 className="text-xl font-bold text-gray-900 dark:text-white">{plan.name}</h3>
-                <p className="text-sm text-secondary-text-light dark:text-secondary-text-dark mt-1">
+                <p className="mt-1 text-sm text-secondary-text-light dark:text-secondary-text-dark">
                   {plan.description}
                 </p>
               </div>
 
-              <div className="flex items-baseline mb-8">
+              <div className="mb-8 flex items-baseline">
                 <span className="text-4xl font-extrabold text-gray-900 dark:text-white">{plan.price}</span>
-                {plan.period && <span className="text-gray-500 dark:text-gray-400 ml-2 text-sm">{plan.period}</span>}
+                <span className="ml-2 text-sm text-gray-500 dark:text-gray-400">{plan.period}</span>
               </div>
 
-              <ul className="space-y-3.5 mb-8 flex-1">
+              <ul className="mb-8 flex-1 space-y-3.5">
                 {plan.features.map((feature) => (
                   <li key={feature} className="flex items-start gap-2">
                     <CheckSmallIcon
-                      className={`w-4 h-4 mt-0.5 flex-shrink-0 ${plan.checkColor}`}
+                      className={`mt-0.5 h-4 w-4 flex-shrink-0 ${plan.checkColor}`}
                       filled={plan.highlighted}
                     />
-                    <span className={`text-sm ${plan.highlighted ? 'text-gray-600 dark:text-gray-300 font-medium' : 'text-gray-600 dark:text-gray-300'}`}>
+                    <span className={`text-sm ${plan.highlighted ? 'font-medium text-gray-600 dark:text-gray-300' : 'text-gray-600 dark:text-gray-300'}`}>
                       {feature}
                     </span>
                   </li>
                 ))}
               </ul>
+
               <a
                 href={getPlanHref(plan)}
                 target="_blank"
                 rel="noopener noreferrer"
-                className={`w-full block text-center py-3 rounded-lg font-semibold transition ${
-                  plan.name === 'Enterprise'
-                    ? 'bg-green-600 hover:bg-green-700 text-white shadow-lg'
-                    : plan.highlighted
-                      ? 'bg-primary hover:bg-primary-hover text-white shadow-lg shadow-blue-500/30'
-                      : 'bg-gray-50 dark:bg-gray-800 hover:bg-gray-100 dark:hover:bg-gray-700 text-primary border border-gray-200 dark:border-gray-600'
+                className={`block w-full rounded-lg py-3 text-center font-semibold transition ${
+                  plan.highlighted
+                    ? 'bg-primary text-white shadow-lg shadow-blue-500/30 hover:bg-primary-hover'
+                    : 'border border-gray-200 bg-gray-50 text-primary hover:bg-gray-100 dark:border-gray-600 dark:bg-gray-800 dark:hover:bg-gray-700'
                 }`}
               >
                 {plan.cta}
@@ -161,7 +162,7 @@ export function PricingSection() {
           ))}
         </div>
 
-        <p className="mt-8 text-center text-sm text-secondary-text-light dark:text-secondary-text-dark max-w-3xl mx-auto">
+        <p className="mx-auto mt-8 max-w-3xl text-center text-sm text-secondary-text-light dark:text-secondary-text-dark">
           La integración del módulo DTE con el Ministerio de Hacienda tiene un costo adicional de pago único.
         </p>
       </div>
@@ -177,6 +178,7 @@ function CheckSmallIcon({ className, filled }: { className?: string; filled?: bo
       </svg>
     )
   }
+
   return (
     <svg className={className} fill="none" viewBox="0 0 24 24" stroke="currentColor">
       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M5 13l4 4L19 7" />

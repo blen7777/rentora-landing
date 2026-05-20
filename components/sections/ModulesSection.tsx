@@ -1,53 +1,7 @@
 'use client'
 
 import { motion } from 'framer-motion'
-
-const moduleGroups = [
-  {
-    title: 'Operación diaria',
-    accent: 'bg-blue-500',
-    modules: [
-      { name: 'Dashboard', description: 'Indicadores de ocupación, ingresos, alertas y actividad reciente.' },
-      { name: 'Reservaciones', description: 'Agenda visual para separar vehículos, fechas, clientes y sucursales.' },
-      { name: 'Rentas', description: 'Contratos activos, entregas, cobros, extensiones y cierres.' },
-      { name: 'Check-in / Check-out', description: 'Inspección, evidencia, combustible, kilometraje y firma del cliente.' },
-      { name: 'Viajes', description: 'Seguimiento de rutas, historial operativo y control de movimientos.' },
-    ],
-  },
-  {
-    title: 'Flota y mantenimiento',
-    accent: 'bg-emerald-500',
-    modules: [
-      { name: 'Vehículos', description: 'Ficha completa por unidad, documentos, placas, pólizas y disponibilidad.' },
-      { name: 'Estado de flota', description: 'Disponible, reservado, rentado, taller, lavado o fuera de servicio.' },
-      { name: 'Mantenimientos', description: 'Preventivos, correctivos, kilometraje, vencimientos y costos.' },
-      { name: 'Conductores', description: 'Licencias, validaciones, historial y asignaciones por renta.' },
-    ],
-  },
-  {
-    title: 'Clientes y finanzas',
-    accent: 'bg-amber-500',
-    modules: [
-      { name: 'Clientes', description: 'Datos, documentos, historial de rentas y comunicación centralizada.' },
-      { name: 'Gastos', description: 'Registro por vehículo, sucursal, categoría y periodo contable.' },
-      { name: 'Reportes', description: 'Rentabilidad, utilización, vencimientos, ingresos y desempeño de flota.' },
-      { name: 'Facturación electrónica DTE', description: 'Emisión de documentos tributarios electrónicos conectada al flujo de renta.' },
-    ],
-  },
-  {
-    title: 'Administración',
-    accent: 'bg-indigo-500',
-    modules: [
-      { name: 'Usuarios', description: 'Roles, permisos y trazabilidad de acciones del equipo.' },
-      { name: 'Sucursales', description: 'Operación multi-sucursal con inventario y reservas por ubicación.' },
-      { name: 'Ajustes / Configuración', description: 'Parámetros comerciales, impuestos, plantillas y reglas internas.' },
-      { name: 'Papelera', description: 'Recuperación y control de registros eliminados por seguridad operativa.' },
-      { name: 'Portal del cliente', description: 'Acceso para solicitudes, documentación, estado de reservas y comunicación.' },
-    ],
-  },
-]
-
-const highlightedFlow = ['Reserva', 'Check-in', 'Renta activa', 'DTE emitido']
+import { rentoraModules } from '@/lib/rentora-seo'
 
 export function ModulesSection() {
   return (
@@ -61,11 +15,14 @@ export function ModulesSection() {
               viewport={{ once: true, amount: 0.25 }}
               transition={{ duration: 0.55, ease: 'easeOut' }}
             >
+              <p className="text-sm font-semibold uppercase tracking-[0.24em] text-primary">
+                Módulos de Rentora
+              </p>
               <h2 className="mt-5 text-3xl font-bold leading-tight text-gray-900 dark:text-white sm:text-4xl">
-                Todos los módulos clave para operar una rentadora profesional
+                Todo lo que una rentadora necesita para operar desde un solo sistema
               </h2>
               <p className="mt-5 text-base leading-relaxed text-secondary-text-light dark:text-secondary-text-dark">
-                Rentora centraliza la operación comercial, la flota, la administración y la facturación DTE en un flujo conectado desde la reserva hasta el cierre de la renta.
+                Rentora conecta la operación, la flota, la facturación y la administración para que tu empresa trabaje con menos fricción y más control.
               </p>
             </motion.div>
 
@@ -80,7 +37,7 @@ export function ModulesSection() {
                 <div>
                   <p className="text-sm font-semibold text-gray-900 dark:text-white">Flujo operativo conectado</p>
                   <p className="mt-1 text-xs text-secondary-text-light dark:text-secondary-text-dark">
-                    La información avanza entre módulos sin duplicar trabajo.
+                    Reserva, entrega, renta y cierre trabajan sobre el mismo registro.
                   </p>
                 </div>
                 <span className="rounded-full bg-emerald-100 px-3 py-1 text-xs font-semibold text-emerald-700 dark:bg-emerald-900/30 dark:text-emerald-300">
@@ -88,7 +45,7 @@ export function ModulesSection() {
                 </span>
               </div>
               <div className="mt-5 grid grid-cols-2 gap-3 sm:grid-cols-4">
-                {highlightedFlow.map((step, index) => (
+                {['Reserva', 'Check-in', 'Renta activa', 'DTE emitido'].map((step, index) => (
                   <motion.div
                     key={step}
                     initial={{ opacity: 0, scale: 0.92 }}
@@ -118,7 +75,9 @@ export function ModulesSection() {
               <div className="flex items-center justify-between border-b border-gray-100 pb-4 dark:border-gray-800">
                 <div>
                   <p className="text-sm font-bold text-gray-900 dark:text-white">Dashboard operativo</p>
-                  <p className="mt-1 text-xs text-secondary-text-light dark:text-secondary-text-dark">Vista ejecutiva de flota, rentas y facturación</p>
+                  <p className="mt-1 text-xs text-secondary-text-light dark:text-secondary-text-dark">
+                    Vista ejecutiva de flota, reservas y facturación
+                  </p>
                 </div>
                 <div className="flex gap-1.5">
                   <span className="h-2.5 w-2.5 rounded-full bg-red-400" />
@@ -161,10 +120,10 @@ export function ModulesSection() {
           </motion.div>
         </div>
 
-        <div className="mt-12 grid gap-5 md:grid-cols-2 xl:grid-cols-4">
-          {moduleGroups.map((group, groupIndex) => (
+        <div className="mt-12 grid gap-5 md:grid-cols-2 xl:grid-cols-3">
+          {rentoraModules.map((group, groupIndex) => (
             <motion.div
-              key={group.title}
+              key={group.group}
               initial={{ opacity: 0, y: 28 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.15 }}
@@ -172,8 +131,8 @@ export function ModulesSection() {
               className="rounded-2xl border border-gray-200 bg-white p-5 shadow-soft transition duration-300 hover:-translate-y-1 hover:shadow-card dark:border-gray-700 dark:bg-surface-dark"
             >
               <div className="mb-5 flex items-center gap-3">
-                <span className={`h-10 w-1.5 rounded-full ${group.accent}`} />
-                <h3 className="text-base font-bold text-gray-900 dark:text-white">{group.title}</h3>
+                <span className="h-10 w-1.5 rounded-full bg-blue-500" />
+                <h3 className="text-base font-bold text-gray-900 dark:text-white">{group.group}</h3>
               </div>
               <div className="space-y-4">
                 {group.modules.map((module) => (

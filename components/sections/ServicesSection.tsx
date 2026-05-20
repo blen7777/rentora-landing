@@ -5,29 +5,29 @@ const features = [
     icon: <CarIcon />,
     iconBg: 'bg-blue-100 dark:bg-blue-900/40 text-primary',
     hoverGlow: 'group-hover:bg-blue-500/5',
-    title: 'Flota',
-    description: 'Monitorea y gestiona tu flota en tiempo real. Control de mantenimiento y estado.',
+    title: 'Control de flota',
+    description: 'Visualiza el estado de cada vehículo, su mantenimiento y su disponibilidad en tiempo real.',
   },
   {
     icon: <CalendarIcon />,
     iconBg: 'bg-indigo-100 dark:bg-indigo-900/40 text-indigo-600 dark:text-indigo-400',
     hoverGlow: 'group-hover:bg-indigo-500/5',
-    title: 'Reservas',
-    description: 'Administra reservas y ocupación de manera eficiente. Calendario visual.',
+    title: 'Reservas centralizadas',
+    description: 'Administra reservas por fecha, sucursal y cliente para evitar duplicidades y sobreventa.',
   },
   {
     icon: <ReceiptIcon />,
     iconBg: 'bg-green-100 dark:bg-green-900/40 text-green-600 dark:text-green-400',
     hoverGlow: 'group-hover:bg-green-500/5',
-    title: 'Facturación Electrónica',
-    description: 'Emite facturas DTE automatizadas y cumple con la normativa salvadoreña.',
+    title: 'Facturación DTE',
+    description: 'Emite documentos tributarios electrónicos dentro del mismo flujo operativo de la renta.',
   },
   {
     icon: <AnalyticsIcon />,
     iconBg: 'bg-purple-100 dark:bg-purple-900/40 text-purple-600 dark:text-purple-400',
     hoverGlow: 'group-hover:bg-purple-500/5',
-    title: 'Reportes',
-    description: 'Genera reportes detallados para analizar el desempeño de tu negocio.',
+    title: 'Reportes ejecutivos',
+    description: 'Toma decisiones con métricas claras sobre ingresos, ocupación, mantenimiento y rentabilidad.',
   },
 ]
 
@@ -35,27 +35,35 @@ export function ServicesSection() {
   return (
     <section
       id="caracteristicas"
-      className="py-16 bg-white dark:bg-surface-dark border-t border-b border-gray-100 dark:border-gray-800"
+      className="border-y border-gray-100 bg-white py-16 dark:border-gray-800 dark:bg-surface-dark"
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div className="mb-10 max-w-3xl">
+          <p className="text-sm font-semibold uppercase tracking-[0.24em] text-primary">
+            Qué resuelve Rentora
+          </p>
+          <h2 className="mt-4 text-3xl font-bold text-gray-900 dark:text-white">
+            Una plataforma enfocada en la operación real de una rentadora de vehículos
+          </h2>
+          <p className="mt-4 text-base leading-relaxed text-secondary-text-light dark:text-secondary-text-dark">
+            Rentora conecta la operación diaria, la flota y la facturación para que el equipo trabaje con más orden, menos errores y menos trabajo manual.
+          </p>
+        </div>
+
+        <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-4">
           {features.map((f) => (
             <div
               key={f.title}
-              className="group p-6 rounded-2xl bg-gradient-to-b from-gray-50 to-white dark:from-gray-800 dark:to-gray-900 hover:shadow-card transition-all duration-300 border border-gray-100 dark:border-gray-700 text-center relative overflow-hidden"
+              className="group relative overflow-hidden rounded-2xl border border-gray-100 bg-gradient-to-b from-gray-50 to-white p-6 text-center transition-all duration-300 hover:shadow-card dark:border-gray-700 dark:from-gray-800 dark:to-gray-900"
             >
-              {/* Hover glow overlay */}
               <div className={`absolute inset-0 opacity-0 ${f.hoverGlow} transition-opacity duration-300`} />
-
-              {/* Icon */}
-              <div className={`w-14 h-14 mx-auto rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform shadow-inner relative z-10 ${f.iconBg}`}>
+              <div className={`relative z-10 mx-auto mb-4 flex h-14 w-14 items-center justify-center rounded-xl shadow-inner ${f.iconBg}`}>
                 {f.icon}
               </div>
-
-              <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-2 relative z-10">
+              <h3 className="relative z-10 mb-2 text-lg font-bold text-gray-900 dark:text-white">
                 {f.title}
               </h3>
-              <p className="text-sm text-secondary-text-light dark:text-secondary-text-dark relative z-10 leading-relaxed">
+              <p className="relative z-10 text-sm leading-relaxed text-secondary-text-light dark:text-secondary-text-dark">
                 {f.description}
               </p>
             </div>

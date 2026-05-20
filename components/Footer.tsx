@@ -1,12 +1,17 @@
+import Link from 'next/link'
+
 export function Footer() {
   return (
     <footer className="bg-blue-950">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex flex-col sm:flex-row justify-between items-center py-6 gap-4">
+        <div className="flex flex-col gap-4 py-6 sm:flex-row sm:items-center sm:justify-between">
           <p className="text-sm text-white/85 text-center sm:text-left">
-            © {new Date().getFullYear()} Tu Rentora. Todos los derechos reservados.
+            © {new Date().getFullYear()} Rentora. Software SaaS para rentadoras de vehículos en Latinoamérica.
           </p>
-          <div className="flex items-center gap-3">
+          <div className="flex flex-wrap items-center justify-center gap-4 text-sm text-white/80">
+            <Link href="/que-es-rentora" className="transition hover:text-white">
+              ¿Qué es Rentora?
+            </Link>
             <a
               href="https://www.facebook.com/profile.php?id=61588286986919"
               target="_blank"

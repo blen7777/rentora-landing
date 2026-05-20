@@ -5,7 +5,7 @@ import Image from 'next/image'
 const CALENDLY_URL = process.env.NEXT_PUBLIC_CALENDLY_URL ?? 'https://calendly.com/tu-usuario/demo'
 
 const checkItems = [
-  'Emite facturas electrónicas validas y seguras',
+  'Emite facturas electrónicas válidas y seguras',
   'Genera DTE (Documento Tributario Electrónico)',
   'Mantén un historial ordenado de todas tus facturas',
 ]
@@ -14,34 +14,30 @@ export function DTESection() {
   return (
     <section id="dte" className="py-16 bg-white dark:bg-surface-dark">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-
-          {/* ── Left: Compliance card ── */}
-          <div className="bg-gradient-to-br from-white to-blue-50 dark:from-surface-dark dark:to-slate-800/50 rounded-3xl p-8 shadow-soft border border-gray-100 dark:border-gray-700 flex flex-col justify-between relative overflow-hidden">
-            <div className="absolute top-4 right-4 opacity-5 pointer-events-none select-none">
+        <div className="grid grid-cols-1 gap-8 lg:grid-cols-2">
+          <div className="relative flex flex-col justify-between overflow-hidden rounded-3xl border border-gray-100 bg-gradient-to-br from-white to-blue-50 p-8 shadow-soft dark:border-gray-700 dark:from-surface-dark dark:to-slate-800/50">
+            <div className="pointer-events-none absolute right-4 top-4 select-none opacity-5">
               <div className="text-6xl font-black text-blue-800">SV</div>
             </div>
 
             <div className="relative z-10">
-              <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">
-                Cumple con la Normativa
+              <h3 className="mb-4 text-2xl font-bold text-gray-900 dark:text-white">
+                Cumple con la normativa
               </h3>
-              <p className="text-secondary-text-light dark:text-secondary-text-dark mb-6 leading-relaxed">
-                Nuestro software de facturación electrónica está diseñado para asegurar el
-                cumplimiento con las normativas fiscales de El Salvador, permitiendo emitir
-                facturas DTE (Documento Tributario Electrónico) válidas según la legislación vigente.
+              <p className="mb-6 leading-relaxed text-secondary-text-light dark:text-secondary-text-dark">
+                Rentora integra facturación electrónica para que la operación de tu rent a car avance con documentación ordenada y alineada a los requisitos fiscales de El Salvador.
               </p>
 
-              <div className="bg-white/80 dark:bg-black/20 backdrop-blur-sm p-4 rounded-xl flex items-start gap-4 mb-6 border border-blue-100 dark:border-blue-900/30 shadow-sm">
-                <div className="bg-primary text-white p-2 rounded-full shadow-lg shadow-blue-500/40 mt-0.5 flex-shrink-0">
-                  <ShieldCheckIcon className="w-5 h-5" />
+              <div className="mb-6 flex items-start gap-4 rounded-xl border border-blue-100 bg-white/80 p-4 shadow-sm backdrop-blur-sm dark:border-blue-900/30 dark:bg-black/20">
+                <div className="mt-0.5 flex-shrink-0 rounded-full bg-primary p-2 text-white shadow-lg shadow-blue-500/40">
+                  <ShieldCheckIcon className="h-5 w-5" />
                 </div>
                 <div>
-                  <h4 className="font-bold text-gray-900 dark:text-white text-base">
+                  <h4 className="text-base font-bold text-gray-900 dark:text-white">
                     Facturación Electrónica DTE
                   </h4>
-                  <p className="text-sm text-gray-600 dark:text-gray-400 mt-0.5">
-                    Compatible con Ministerio de Hacienda El Salvador
+                  <p className="mt-0.5 text-sm text-gray-600 dark:text-gray-400">
+                    Compatible con el Ministerio de Hacienda de El Salvador
                   </p>
                 </div>
               </div>
@@ -49,7 +45,7 @@ export function DTESection() {
               <ul className="space-y-3">
                 {checkItems.map((item) => (
                   <li key={item} className="flex items-start gap-2.5 text-sm text-gray-600 dark:text-gray-300">
-                    <CheckIcon className="w-4 h-4 text-primary mt-0.5 flex-shrink-0" />
+                    <CheckIcon className="mt-0.5 h-4 w-4 flex-shrink-0 text-primary" />
                     {item}
                   </li>
                 ))}
@@ -57,56 +53,48 @@ export function DTESection() {
             </div>
           </div>
 
-          {/* ── Right: Automate card ── */}
-          <div className="bg-white dark:bg-surface-dark rounded-3xl shadow-soft border border-gray-100 dark:border-gray-700 flex flex-col justify-between overflow-hidden relative min-h-[380px]">
-
-            {/* Text content */}
-            <div className="relative z-10 p-8 max-w-xs">
-              <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">
-                Automatiza y Optimiza
+          <div className="relative flex min-h-[380px] flex-col justify-between overflow-hidden rounded-3xl border border-gray-100 bg-white shadow-soft dark:border-gray-700 dark:bg-surface-dark">
+            <div className="relative z-10 max-w-xs p-8">
+              <h3 className="mb-4 text-2xl font-bold text-gray-900 dark:text-white">
+                Automatiza y optimiza
               </h3>
-              <p className="text-secondary-text-light dark:text-secondary-text-dark mb-8 leading-relaxed text-sm">
-                Optimiza el proceso de manejo de flotas, reservas y facturación. Ahorra tiempo y
-                valida en orden con nuestra plataforma automatizada.
+              <p className="mb-8 text-sm leading-relaxed text-secondary-text-light dark:text-secondary-text-dark">
+                Optimiza el manejo de flotas, reservas y facturación. Ahorra tiempo y opera con más control desde una sola plataforma.
               </p>
               <a
                 href={CALENDLY_URL}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center justify-center bg-primary hover:bg-primary-hover text-white px-6 py-3 rounded-lg font-medium shadow-lg shadow-blue-500/30 transition hover:-translate-y-0.5 duration-200 text-sm"
+                className="inline-flex items-center justify-center rounded-lg bg-primary px-6 py-3 text-sm font-medium text-white shadow-lg shadow-blue-500/30 transition duration-200 hover:-translate-y-0.5 hover:bg-primary-hover"
               >
-                Solicitar una Demostración
+                Solicitar una demostración
               </a>
             </div>
 
-            <div className="absolute right-0 w-72 h-80 pointer-events-none select-none">
-              {/* Fade mask from transparent (top) to visible (bottom) */}
+            <div className="pointer-events-none absolute right-0 h-80 w-72 select-none">
               <div
-                  className="absolute inset-0 z-10"
-                  style={{
-                    background: 'linear-gradient(to bottom, white 0%, transparent 35%)',
-                  }}
+                className="absolute inset-0 z-10"
+                style={{
+                  background: 'linear-gradient(to bottom, white 0%, transparent 35%)',
+                }}
               />
-              {/* Dark mode fade */}
               <div
-                  className="absolute inset-0 z-10 hidden dark:block"
-                  style={{
-                    background: 'linear-gradient(to bottom, #1E293B 0%, transparent 35%)',
-                  }}
+                className="absolute inset-0 z-10 hidden dark:block"
+                style={{
+                  background: 'linear-gradient(to bottom, #1E293B 0%, transparent 35%)',
+                }}
               />
               <Image
-                  src="/images/agent.png"
-                  alt="Agente de soporte Tu Rentadora"
-                  fill
-                  className="object-contain object-bottom"
-                  priority
+                src="/images/agent.png"
+                alt="Agente de soporte de Rentora"
+                fill
+                className="object-contain object-bottom"
+                loading="lazy"
               />
             </div>
 
-            {/* Glow blob */}
-            <div className="absolute -bottom-10 -right-10 w-48 h-48 bg-blue-500/10 rounded-full blur-3xl z-0" />
+            <div className="absolute -bottom-10 -right-10 z-0 h-48 w-48 rounded-full bg-blue-500/10 blur-3xl" />
           </div>
-
         </div>
       </div>
     </section>
