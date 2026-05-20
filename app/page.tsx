@@ -2,6 +2,7 @@ import { Navbar } from '@/components/Navbar'
 import { Hero } from '@/components/Hero'
 import { ServicesSection } from '@/components/sections/ServicesSection'
 import { RentoraOverviewSection } from '@/components/sections/RentoraOverviewSection'
+import { VideoDemoSection } from '@/components/sections/VideoDemoSection'
 import { WhyChooseUsSection } from '@/components/sections/WhyChooseUsSection'
 import { ModulesSection } from '@/components/sections/ModulesSection'
 import { DTESection } from '@/components/sections/DTESection'
@@ -32,6 +33,7 @@ export default function Home() {
       <main>
         <Hero />
         <RentoraOverviewSection />
+        <VideoDemoSection />
         <ServicesSection />
         <WhyChooseUsSection />
         <ModulesSection />

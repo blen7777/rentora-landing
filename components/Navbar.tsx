@@ -47,6 +47,7 @@ export function Navbar() {
           <div className="hidden md:flex items-center space-x-1">
             {[
               { label: '¿Qué es Rentora?', href: '/que-es-rentora' },
+              { label: 'Demo', href: '/#demo' },
               { label: 'Características', href: '/#caracteristicas' },
               { label: 'Módulos', href: '/#modulos' },
               { label: 'Precios', href: '/#precios' },
