@@ -98,11 +98,6 @@ export function VideoDemoSection() {
               </div>
             </div>
 
-            <div className="absolute -bottom-6 -left-4 rounded-2xl border border-blue-100 bg-white px-4 py-3 shadow-xl dark:border-blue-900/40 dark:bg-slate-900">
-              <p className="mt-1 text-sm text-secondary-text-light dark:text-secondary-text-dark">
-                Usa un video de 60 a 120 segundos para mostrar el flujo principal.
-              </p>
-            </div>
           </div>
         </div>
       </div>
