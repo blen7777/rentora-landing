@@ -2,35 +2,38 @@
 
 const plans = [
   {
-    name: 'Free Trial',
-    description: 'Prueba guiada por 14 días',
-    price: '$0',
-    period: '/ 14 días',
+    name: 'Micro',
+    description: 'Para emprendedores',
+    price: 'USD $20.00',
+    period: '/mes sin IVA',
     features: [
-      'Acceso temporal por 14 días',
-      'Hasta 5 vehículos',
+      'Hasta 7 vehículos',
+      'Hasta 30 DTE / mes',
+      'DTE adicional: $0.15 c/u',
       '1 sucursal',
-      'Recorrido guiado por la plataforma',
+      '2 usuarios',
+      'Contratos PDF automáticos',
+      'Soporte por email, respuesta en 24–48h hábiles',
     ],
-    cta: 'Comenzar gratis',
-    ctaHref: 'https://platform.rentora-app.com/signup',
+    cta: 'Elegir plan',
+    ctaHref: '#',
     highlighted: false,
     checkColor: 'text-green-500',
   },
   {
     name: 'Starter',
     description: 'Para agencias pequeñas',
-    price: '$49',
-    period: '+ IVA /mes',
+    price: 'USD $49.00',
+    period: '/mes sin IVA',
     features: [
-      '1–5 vehículos',
+      'Hasta 10 vehículos',
       'Hasta 100 DTE / mes',
       'DTE adicional: $0.15 c/u',
       '1 sucursal',
       'Control de usuarios',
-      'Reservas básicas',
+      'Gestión de reservas básica',
       'Contratos PDF automáticos',
-      'Soporte por email en 24–48h hábiles',
+      'Soporte por email, respuesta en 24–48h hábiles',
     ],
     cta: 'Elegir plan',
     ctaHref: '#',
@@ -40,8 +43,8 @@ const plans = [
   {
     name: 'Pro',
     description: 'Para flotas medianas',
-    price: '$99',
-    period: '+ IVA /mes',
+    price: 'USD $99.00',
+    period: '/mes sin IVA',
     features: [
       '6–20 vehículos',
       'Hasta 400 DTE / mes',
@@ -50,7 +53,7 @@ const plans = [
       '2 sucursales',
       'Control de usuarios',
       'Reportes financieros avanzados',
-      'Soporte prioritario en 12–24h hábiles',
+      'Soporte prioritario, respuesta en 12–24h hábiles',
     ],
     cta: 'Elegir plan',
     ctaHref: '#',
@@ -60,8 +63,8 @@ const plans = [
   {
     name: 'Business',
     description: 'Para agencias en crecimiento',
-    price: '$179',
-    period: '+ IVA /mes',
+    price: 'USD $179.00',
+    period: '/mes sin IVA',
     features: [
       '21–60 vehículos',
       'Hasta 700 DTE / mes',
@@ -69,9 +72,28 @@ const plans = [
       'Reportes ejecutivos',
       '3 sucursales',
       'Control de usuarios',
-      'Soporte prioritario avanzado en 4–8h hábiles',
+      'Soporte prioritario avanzado, respuesta en 4–8h hábiles',
     ],
     cta: 'Elegir plan',
+    ctaHref: '#',
+    highlighted: false,
+    checkColor: 'text-green-500',
+  },
+  {
+    name: 'Enterprise',
+    description: 'Para grandes operaciones',
+    price: 'USD $299.00',
+    period: '/mes sin IVA',
+    features: [
+      'Vehículos ilimitados',
+      'Usuarios ilimitados',
+      'DTE ilimitado',
+      'Sucursales ilimitadas',
+      'Todas las funciones Business',
+      'Onboarding personalizado',
+      'Soporte dedicado',
+    ],
+    cta: 'Contactar ventas',
     ctaHref: '#',
     highlighted: false,
     checkColor: 'text-green-500',
@@ -104,7 +126,7 @@ export function PricingSection() {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 items-stretch gap-8 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="grid grid-cols-1 items-stretch gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5">
           {plans.map((plan) => (
             <div
               key={plan.name}
