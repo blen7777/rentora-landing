@@ -79,25 +79,6 @@ const plans = [
     highlighted: false,
     checkColor: 'text-green-500',
   },
-  {
-    name: 'Enterprise',
-    description: 'Para grandes operaciones',
-    price: 'USD $299.00',
-    period: '/mes sin IVA',
-    features: [
-      'Vehículos ilimitados',
-      'Usuarios ilimitados',
-      'DTE ilimitado',
-      'Sucursales ilimitadas',
-      'Todas las funciones Business',
-      'Onboarding personalizado',
-      'Soporte dedicado',
-    ],
-    cta: 'Contactar ventas',
-    ctaHref: '#',
-    highlighted: false,
-    checkColor: 'text-green-500',
-  },
 ]
 
 export function PricingSection() {
@@ -126,7 +107,7 @@ export function PricingSection() {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 items-stretch gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5">
+        <div className="grid grid-cols-1 items-stretch gap-6 sm:grid-cols-2 lg:grid-cols-4">
           {plans.map((plan) => (
             <div
               key={plan.name}
