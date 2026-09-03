@@ -5,7 +5,7 @@ const plans = [
     name: 'Micro',
     description: 'Para emprendedores',
     price: 'USD $20.00',
-    period: '/mes sin IVA',
+    period: '+ IVA / mes',
     features: [
       'Hasta 7 vehículos',
       'Hasta 30 DTE / mes',
@@ -24,7 +24,7 @@ const plans = [
     name: 'Starter',
     description: 'Para agencias pequeñas',
     price: 'USD $49.00',
-    period: '/mes sin IVA',
+    period: '+ IVA / mes',
     features: [
       'Hasta 10 vehículos',
       'Hasta 100 DTE / mes',
@@ -44,7 +44,7 @@ const plans = [
     name: 'Pro',
     description: 'Para flotas medianas',
     price: 'USD $99.00',
-    period: '/mes sin IVA',
+    period: '+ IVA / mes',
     features: [
       '6–20 vehículos',
       'Hasta 400 DTE / mes',
@@ -64,7 +64,7 @@ const plans = [
     name: 'Business',
     description: 'Para agencias en crecimiento',
     price: 'USD $179.00',
-    period: '/mes sin IVA',
+    period: '+ IVA / mes',
     features: [
       '21–60 vehículos',
       'Hasta 700 DTE / mes',
@@ -166,6 +166,8 @@ export function PricingSection() {
         </div>
 
         <p className="mx-auto mt-8 max-w-3xl text-center text-sm text-secondary-text-light dark:text-secondary-text-dark">
+          Precios mensuales expresados en dólares estadounidenses. No incluyen IVA; se añadirá el 13% al momento de facturar.
+          <br />
           La integración del módulo DTE con el Ministerio de Hacienda tiene un costo adicional de pago único.
         </p>
       </div>
