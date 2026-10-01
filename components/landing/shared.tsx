@@ -123,17 +123,20 @@ export function ButtonLink({
   secondary = false,
   className = '',
   external = true,
+  trackLabel,
 }: {
   children: ReactNode
   href?: string
   secondary?: boolean
   className?: string
   external?: boolean
+  trackLabel?: string
 }) {
   return (
     <a
       href={href}
       className={`r-button ${secondary ? 'r-button-secondary' : ''} ${className}`}
+      data-track-label={trackLabel}
       {...(external ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
     >
       {children}

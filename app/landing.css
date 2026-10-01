@@ -2869,6 +2869,15 @@
 .r-section-heading h2 > span {
   color: #b65b0b;
 }
+.r-hero h1 > .r-hero-kicker {
+  display: block;
+  margin-bottom: 18px;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 1.6px;
+  line-height: 1.4;
+  text-transform: uppercase;
+}
 .r-eyebrow > span {
   background: var(--r-orange);
 }

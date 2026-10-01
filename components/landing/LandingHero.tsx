@@ -9,6 +9,7 @@ export function LandingHero({ videoSource = '' }: { videoSource?: string }) {
         <div className="r-container r-hero-grid">
           <div className="r-hero-copy">
             <h1>
+              <span className="r-hero-kicker">Software para rent a car</span>
               Tu flota en orden.
               <br />
               Tu negocio

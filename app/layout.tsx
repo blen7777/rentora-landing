@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import './globals.css'
 import { rentoraBrand, rentoraSeo } from '@/lib/rentora-seo'
+import { MetaPixel } from '@/components/MetaPixel'
 
 const inter = Inter({ subsets: ['latin'], variable: '--font-inter' })
 
@@ -57,6 +58,7 @@ export default function RootLayout({
     <html lang="es" className="scroll-smooth">
       <body className={`${inter.variable} font-sans`}>
         {children}
+        <MetaPixel />
       </body>
     </html>
   )

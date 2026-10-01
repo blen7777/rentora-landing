@@ -132,6 +132,7 @@ function LandingPricing() {
                   `Hola, me interesa el plan ${plan.name} de Rentora. Mi rentadora necesita más información sobre la implementación.`,
                 )}
                 secondary={plan.name !== 'Pro'}
+                trackLabel={`Plan ${plan.name}`}
               >
                 Elegir {plan.name}
               </ButtonLink>

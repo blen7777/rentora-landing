@@ -2,6 +2,7 @@
 
 import { useRef, useState } from 'react'
 import { ButtonLink, Icon } from './shared'
+import { trackPixelCustom } from '@/lib/meta-pixel'
 
 function mediaSource(raw: string) {
   if (!raw) return null
@@ -48,6 +49,7 @@ export function VideoPreview({
   const [failed, setFailed] = useState(false)
   const media = mediaSource(source)
   function show() {
+    trackPixelCustom('VideoDemoOpen', { placement: compact ? 'hero' : 'salvador' })
     setFailed(false)
     setOpen(true)
     dialog.current?.showModal()
