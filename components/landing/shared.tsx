@@ -1,11 +1,14 @@
 import type { ReactNode } from 'react'
 import Image from 'next/image'
+import { rentoraBrand } from '@/lib/rentora-seo'
 
+// Only "Agendar demo" CTAs go to Calendly; every other contact CTA uses WhatsApp.
 export const demoUrl =
-  process.env.NEXT_PUBLIC_CALENDLY_URL || 'https://calendly.com/blen7777/30min'
+  process.env.NEXT_PUBLIC_CALENDLY_URL || 'https://calendly.com/rentoralatam/30min'
 export const whatsappUrl = (
   message = 'Hola, quiero conocer Rentora y organizar mi rent a car.',
-) => `https://wa.me/50376471451?text=${encodeURIComponent(message)}`
+) =>
+  `https://wa.me/${rentoraBrand.whatsappNumber}?text=${encodeURIComponent(message)}`
 
 export function Icon({
   name = 'arrow',

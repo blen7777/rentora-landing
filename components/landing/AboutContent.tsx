@@ -7,6 +7,7 @@ import { SalvadorJourney } from './SalvadorJourney'
 import { DemoCallToAction, LandingFooter } from './ConversionSections'
 import { LandingNav } from './LandingNav'
 import { VideoPreview } from './VideoPreview'
+import { WhatsAppFloat } from './WhatsAppFloat'
 
 export function AboutContent({ videoSource = '' }: { videoSource?: string }) {
   return (
@@ -179,6 +180,7 @@ export function AboutContent({ videoSource = '' }: { videoSource?: string }) {
         <DemoCallToAction />
       </main>
       <LandingFooter />
+      <WhatsAppFloat />
     </div>
   )
 }

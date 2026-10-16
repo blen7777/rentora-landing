@@ -14,10 +14,6 @@ export const metadata: Metadata = {
   },
   description: rentoraSeo.description,
   keywords: rentoraSeo.keywords,
-  icons: {
-    icon: '/favicon.ico',
-    apple: '/apple-touch-icon.png',
-  },
   openGraph: {
     title: rentoraSeo.openGraphTitle,
     description: rentoraSeo.openGraphDescription,

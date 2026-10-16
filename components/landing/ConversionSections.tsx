@@ -1,4 +1,5 @@
 import { Brand, ButtonLink, Icon, SectionHeading, whatsappUrl } from './shared'
+import { rentoraBrand } from '@/lib/rentora-seo'
 
 export const landingFaqs = [
   {
@@ -264,16 +265,25 @@ export function LandingFooter() {
           <div>
             <span>PLATAFORMA</span>
             <a href="/#modulos">Soluciones</a>
-            <a href="#como-funciona">Cómo funciona</a>
+            <a href="/#como-funciona">Cómo funciona</a>
             <a href="/#precios">Planes</a>
+            <a href="/que-es-rentora">¿Qué es Rentora?</a>
+            <a href="/#faq">Preguntas frecuentes</a>
           </div>
           <div>
-            <span>CONOCE RENTORA</span>
-            <a href="/que-es-rentora">¿Qué es Rentora?</a>
-            <a href="#faq">Preguntas frecuentes</a>
+            <span>CONTACTO</span>
             <a href={whatsappUrl()} target="_blank" rel="noopener noreferrer">
-              Contáctanos <Icon name="diagonal" size={13} />
+              WhatsApp {rentoraBrand.phoneDisplay}{' '}
+              <Icon name="diagonal" size={13} />
             </a>
+            <a href={`mailto:${rentoraBrand.supportEmail}`}>
+              {rentoraBrand.supportEmail}
+            </a>
+          </div>
+          <div>
+            <span>LEGAL</span>
+            <a href="/terminos">Términos y condiciones</a>
+            <a href="/privacidad">Política de privacidad</a>
           </div>
           <div className="r-footer-location">
             <Icon name="globe" size={20} />
@@ -288,9 +298,8 @@ export function LandingFooter() {
           <span>
             © {new Date().getFullYear()} Rentora. Todos los derechos reservados.
           </span>
-          <a href="mailto:hola@rentora-app.com">
-            hola@rentora-app.com <Icon name="diagonal" size={13} />
-          </a>
+          <a href="/terminos">Términos</a>
+          <a href="/privacidad">Privacidad</a>
           <a href="#inicio">Volver arriba ↑</a>
         </div>
       </div>

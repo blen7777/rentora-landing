@@ -5,7 +5,10 @@ export const rentoraBrand = {
   shortName: 'Rentora',
   siteUrl: SITE_URL,
   canonicalUrl: `${SITE_URL}/`,
-  supportEmail: 'hola@rentora-app.com',
+  supportEmail: 'rentoralatam@gmail.com',
+  phoneDisplay: '+503 6969 0810',
+  phone: '+50369690810',
+  whatsappNumber: '50369690810',
 }
 
 export const rentoraSeo = {
@@ -203,6 +206,15 @@ export function buildOrganizationJsonLd() {
     description: rentoraDescription,
     areaServed: 'Latinoamérica',
     email: rentoraBrand.supportEmail,
+    telephone: rentoraBrand.phone,
+    contactPoint: {
+      '@type': 'ContactPoint',
+      contactType: 'sales',
+      email: rentoraBrand.supportEmail,
+      telephone: rentoraBrand.phone,
+      areaServed: 'Latinoamérica',
+      availableLanguage: 'es',
+    },
     slogan: 'Automatiza y administra tu rent a car desde una sola plataforma.',
     brand: rentoraBrand.name,
   }

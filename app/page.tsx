@@ -8,6 +8,7 @@ import {
   LandingFooter,
   landingFaqs,
 } from '@/components/landing/ConversionSections'
+import { WhatsAppFloat } from '@/components/landing/WhatsAppFloat'
 import './landing.css'
 import { buildSeoJsonLd, rentoraBrand } from '@/lib/rentora-seo'
 
@@ -46,6 +47,7 @@ export default function Home() {
         <ConversionSections />
       </main>
       <LandingFooter />
+      <WhatsAppFloat />
     </div>
   )
 }

@@ -1,7 +1,13 @@
 'use client'
 
 import { useState, type KeyboardEvent } from 'react'
-import { ButtonLink, CarIllustration, Icon, SectionHeading } from './shared'
+import {
+  ButtonLink,
+  CarIllustration,
+  Icon,
+  SectionHeading,
+  whatsappUrl,
+} from './shared'
 import { ModuleDetailsModal, type ModuleKey } from './ModuleDetailsModal'
 
 const steps = [
@@ -347,7 +353,14 @@ function CustomerPortalSection() {
               celular
             </li>
           </ul>
-          <ButtonLink>Quiero verlo en una demo</ButtonLink>
+          <ButtonLink
+            href={whatsappUrl(
+              'Hola, quiero conocer el portal de clientes de Rentora para mi rentadora.',
+            )}
+            trackLabel="Portal de clientes"
+          >
+            Quiero conocer el portal
+          </ButtonLink>
         </div>
         <div className="r-portal-art">
           <span className="r-portal-orbit" />

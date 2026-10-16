@@ -1802,9 +1802,12 @@
 }
 .r-footer-top {
   display: grid;
-  grid-template-columns: 1.25fr 1fr 1fr 1fr;
+  grid-template-columns: 1.25fr 1fr 1.2fr 1fr 1fr;
   gap: 40px;
   padding-bottom: 44px;
+}
+.r-footer-top > div > a {
+  overflow-wrap: anywhere;
 }
 .r-footer-top > div:first-child > p {
   font-size: 11px;
@@ -2166,8 +2169,9 @@
   }
   .r-footer-top {
     gap: 25px;
-    grid-template-columns: 1.2fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr;
   }
+  .r-footer-top > div:first-child,
   .r-footer-location {
     grid-column: 1/-1;
   }
@@ -3711,3 +3715,310 @@
 @keyframes r-module-grow { from { transform: scaleY(.82); } to { transform: scaleY(1); } }
 @media (max-width: 600px) { .r-module-dialog { width: calc(100% - 20px); border-radius: 18px; }.r-module-dialog-header { padding: 20px 20px 0; }.r-module-dialog-body { grid-template-columns: 1fr; gap: 20px; padding: 12px 20px 22px; }.r-module-dialog-copy h2 { font-size: 2.35rem; }.r-module-animation { min-height: 260px; padding: 20px; }.r-module-dialog-note { padding: 0 20px 18px; } }
 @media (prefers-reduced-motion: reduce) { .r-module-dialog-card, .r-module-car-track .r-car, .r-module-reservation-bar, .r-module-calendar-grid .is-selected, .r-module-signature span, .r-module-finance-bars i { animation: none !important; } }
+/* Legal pages (términos y privacidad) */
+.r-legal-hero {
+  background: #0b1e3d;
+  color: white;
+  padding-block: 64px 56px;
+}
+.r-legal-hero .r-eyebrow {
+  color: #ffb966;
+}
+.r-legal-hero h1 {
+  font-size: clamp(34px, 4vw, 54px);
+  font-weight: 550;
+  letter-spacing: -2px;
+  line-height: 1.1;
+  margin-top: 18px;
+}
+.r-legal-intro {
+  max-width: 720px;
+  color: #bdcadd;
+  font-size: 15px;
+  line-height: 1.85;
+  margin-top: 20px;
+}
+.r-legal-updated {
+  color: #8fa1bb;
+  font-size: 12px;
+  margin-top: 22px;
+}
+.r-legal-layout {
+  display: grid;
+  grid-template-columns: 260px minmax(0, 1fr);
+  gap: 56px;
+  align-items: start;
+  padding-block: 56px 80px;
+}
+.r-legal-toc {
+  position: sticky;
+  top: 96px;
+  max-height: calc(100vh - 120px);
+  overflow: auto;
+}
+.r-legal-toc summary {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--r-muted);
+  cursor: pointer;
+  list-style: none;
+  margin-bottom: 14px;
+}
+.r-legal-toc summary::-webkit-details-marker {
+  display: none;
+}
+.r-legal-toc ol {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.r-legal-toc li {
+  margin-bottom: 4px;
+}
+.r-legal-toc ol ol {
+  padding-left: 14px;
+  margin: 4px 0 8px;
+}
+.r-legal-toc a {
+  display: block;
+  padding: 5px 10px;
+  border-left: 2px solid var(--r-line);
+  color: var(--r-muted);
+  font-size: 13px;
+  line-height: 1.45;
+}
+.r-legal-toc a:hover {
+  color: var(--r-ink);
+  border-left-color: #ff9100;
+}
+.r-legal-body {
+  max-width: 780px;
+  color: #33415a;
+  font-size: 15px;
+  line-height: 1.8;
+}
+.r-legal-body section {
+  scroll-margin-top: 96px;
+  padding-bottom: 28px;
+  margin-bottom: 36px;
+  border-bottom: 1px solid var(--r-line);
+}
+.r-legal-body h2 {
+  color: var(--r-ink);
+  font-size: clamp(24px, 2.4vw, 30px);
+  font-weight: 600;
+  letter-spacing: -0.8px;
+  line-height: 1.25;
+  margin-bottom: 18px;
+}
+.r-legal-body h3 {
+  scroll-margin-top: 96px;
+  color: var(--r-ink);
+  font-size: 19px;
+  font-weight: 600;
+  margin: 32px 0 12px;
+}
+.r-legal-body h4 {
+  color: var(--r-ink);
+  font-size: 16px;
+  font-weight: 600;
+  margin: 26px 0 12px;
+}
+.r-legal-body p {
+  margin-bottom: 14px;
+}
+.r-legal-body ul,
+.r-legal-body ol {
+  padding-left: 22px;
+  margin-bottom: 16px;
+}
+.r-legal-body ul {
+  list-style: disc;
+}
+.r-legal-body ol {
+  list-style: decimal;
+}
+.r-legal-body li {
+  margin-bottom: 8px;
+}
+.r-legal-body li::marker {
+  color: #ff9100;
+}
+.r-legal-body strong {
+  color: var(--r-ink);
+  font-weight: 600;
+}
+.r-legal-body a {
+  color: #c25e00;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.r-legal-table-wrap {
+  overflow-x: auto;
+  margin: 8px 0 22px;
+  border: 1px solid var(--r-line);
+  border-radius: 14px;
+  background: white;
+}
+.r-legal-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+}
+.r-legal-table thead th {
+  background: #f1f4f9;
+  color: var(--r-ink);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  text-align: left;
+  padding: 12px 18px;
+}
+.r-legal-table tbody th,
+.r-legal-table td {
+  vertical-align: top;
+  text-align: left;
+  padding: 16px 18px;
+  border-top: 1px solid var(--r-line);
+}
+.r-legal-table tbody th {
+  width: 42%;
+  font-weight: 400;
+}
+.r-legal-table ul {
+  margin: 0;
+  padding-left: 18px;
+}
+.r-legal-table li {
+  margin-bottom: 4px;
+}
+.r-legal-contact {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 22px 24px;
+  border-radius: 16px;
+  background: #0b1e3d;
+  color: #bdcadd;
+}
+.r-legal-contact strong {
+  color: white;
+}
+.r-legal-contact a {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  color: #ffb966;
+}
+@media (max-width: 900px) {
+  .r-legal-layout {
+    grid-template-columns: 1fr;
+    gap: 28px;
+    padding-block: 32px 60px;
+  }
+  .r-legal-toc {
+    position: static;
+    max-height: none;
+    border: 1px solid var(--r-line);
+    border-radius: 14px;
+    background: white;
+    padding: 14px 16px;
+  }
+  .r-legal-toc summary {
+    margin-bottom: 0;
+  }
+  .r-legal-toc details[open] summary {
+    margin-bottom: 12px;
+  }
+}
+@media (max-width: 600px) {
+  .r-legal-hero {
+    padding-block: 40px 36px;
+  }
+  .r-legal-table thead {
+    display: none;
+  }
+  .r-legal-table,
+  .r-legal-table tbody,
+  .r-legal-table tr,
+  .r-legal-table tbody th,
+  .r-legal-table td {
+    display: block;
+    width: 100%;
+  }
+  .r-legal-table tbody th {
+    border-top: 1px solid var(--r-line);
+    padding-bottom: 6px;
+  }
+  .r-legal-table td {
+    border-top: 0;
+    padding-top: 0;
+  }
+  .r-legal-table tr:first-child th {
+    border-top: 0;
+  }
+}
+/* Floating WhatsApp button */
+.r-whatsapp-float {
+  position: fixed;
+  right: max(20px, env(safe-area-inset-right));
+  bottom: max(20px, env(safe-area-inset-bottom));
+  z-index: 90;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  height: 58px;
+  padding: 0 22px 0 15px;
+  border-radius: 999px;
+  background: #25d366;
+  color: white;
+  font-size: 15px;
+  font-weight: 600;
+  box-shadow: 0 10px 28px #0b1e3d40, 0 2px 6px #0b1e3d26;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+  animation: r-whatsapp-in 0.5s ease-out 1s both;
+}
+.r-whatsapp-float:hover {
+  background: #1ebe5b;
+  transform: translateY(-3px);
+  box-shadow: 0 14px 32px #0b1e3d4d, 0 3px 8px #0b1e3d26;
+}
+.r-whatsapp-float:focus-visible {
+  outline: 3px solid #ff9100;
+  outline-offset: 3px;
+}
+@keyframes r-whatsapp-in {
+  from {
+    opacity: 0;
+    transform: translateY(16px) scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+@media (max-width: 600px) {
+  .r-whatsapp-float {
+    right: max(16px, env(safe-area-inset-right));
+    bottom: max(16px, env(safe-area-inset-bottom));
+    width: 56px;
+    height: 56px;
+    padding: 0;
+    justify-content: center;
+  }
+  .r-whatsapp-float-label {
+    display: none;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .r-whatsapp-float {
+    animation: none;
+    transition: none;
+  }
+  .r-whatsapp-float:hover {
+    transform: none;
+  }
+}
