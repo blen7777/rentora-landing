@@ -268,6 +268,7 @@ export function LandingFooter() {
             <a href="/#como-funciona">Cómo funciona</a>
             <a href="/#precios">Planes</a>
             <a href="/que-es-rentora">¿Qué es Rentora?</a>
+            <a href="/referidos">Programa de referidos</a>
             <a href="/#faq">Preguntas frecuentes</a>
           </div>
           <div>
