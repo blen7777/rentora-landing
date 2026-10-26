@@ -2,6 +2,7 @@ import type { CSSProperties } from 'react'
 import { ButtonLink, Icon, SectionHeading, whatsappUrl } from './shared'
 import { LandingFooter } from './ConversionSections'
 import { LandingNav } from './LandingNav'
+import { ProgramSwitcher } from './ProgramSwitcher'
 import { WhatsAppFloat } from './WhatsAppFloat'
 import { rentoraBrand } from '@/lib/rentora-seo'
 
@@ -49,7 +50,7 @@ const rules = [
   'La comisión es un pago único por cada rentadora referida, no un pago mensual.',
   'Se calcula sobre el precio de un mes del plan que contrate, sin IVA y después de descuentos.',
   'Si su primer pago se reembolsa o se revierte, la comisión se anula.',
-  'No se aceptan registros de tu propia empresa ni comisiones duplicadas: cada empresa genera una sola comisión.',
+  'No se aceptan registros de tu propia empresa ni comisiones duplicadas: cada empresa genera una sola comisión, la de quien la trajo (un cliente con su código o un aliado de Rentora).',
   'No hay límite: puedes referir a todas las rentadoras que quieras.',
 ]
 
@@ -92,7 +93,7 @@ export const referralFaqs = [
   {
     question: '¿Mi empresa tiene que ser cliente de Rentora?',
     answer:
-      'Sí. El programa es para empresas con su suscripción pagada y activa. Tu código aparece en cuanto tu suscripción está al día.',
+      'Sí. El programa es para empresas con su suscripción pagada y activa. Tu código aparece en cuanto tu suscripción está al día. Si no eres cliente pero conoces rentadoras, puedes ganar con el programa de aliados en rentora-app.com/aliados.',
   },
   {
     question: 'La rentadora se registró sin mi código. ¿Qué hago?',
@@ -167,6 +168,8 @@ export function ReferralContent() {
             </div>
           </div>
         </section>
+
+        <ProgramSwitcher current="referidos" />
 
         <section className="r-container r-section" id="como-funciona-referidos">
           <SectionHeading
