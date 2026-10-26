@@ -4289,3 +4289,81 @@
     transform: none;
   }
 }
+/* Selector entre programas: referidos (clientes) y aliados (cualquier persona) */
+.r-ref-switcher {
+  padding-top: 40px;
+}
+.r-ref-switcher-title {
+  font-size: 12px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: #8492a8;
+  margin-bottom: 14px;
+}
+.r-ref-switcher-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+}
+.r-ref-switcher-card {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 20px 22px;
+  background: white;
+  border: 1px solid #dfe6ef;
+  border-radius: 15px;
+  color: var(--r-ink);
+  transition:
+    border-color 0.2s,
+    box-shadow 0.2s;
+}
+.r-ref-switcher-card > svg:first-child {
+  color: #c66808;
+  flex-shrink: 0;
+}
+.r-ref-switcher-card > span {
+  display: grid;
+  gap: 4px;
+  flex: 1;
+}
+.r-ref-switcher-card strong {
+  font-size: 15px;
+  font-weight: 600;
+}
+.r-ref-switcher-card small {
+  font-size: 13px;
+  line-height: 1.6;
+  color: #52647c;
+}
+.r-ref-switcher-card em {
+  font-style: normal;
+  font-size: 11px;
+  font-weight: 600;
+  color: #c66808;
+  background: #fff4e5;
+  border-radius: 999px;
+  padding: 4px 10px;
+  white-space: nowrap;
+}
+.r-ref-switcher-card:hover {
+  border-color: #ff9100;
+  box-shadow: 0 12px 28px #0b1e3d0e;
+}
+.r-ref-switcher-card.is-active {
+  border-color: #ff9100;
+  background: #fffaf3;
+}
+.r-ref-switcher-arrow {
+  color: #8492a8;
+  flex-shrink: 0;
+}
+.r-ref-table td small {
+  color: #8492a8;
+  font-size: 12px;
+}
+@media (max-width: 900px) {
+  .r-ref-switcher-grid {
+    grid-template-columns: 1fr;
+  }
+}
