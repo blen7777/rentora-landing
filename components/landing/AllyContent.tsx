@@ -11,6 +11,7 @@ export const ALLY_RATE_FIRST_YEAR = 15
 export const ALLY_RATE_AFTER = 10
 export const ALLY_ENTERPRISE_FLAT = 100
 
+const JOIN_EMAIL_SUBJECT = 'Quiero ser aliado de Rentora'
 const JOIN_MESSAGE =
   'Hola, quiero ser aliado de Rentora y referir rentadoras. ¿Cómo me registro?'
 
@@ -28,18 +29,18 @@ const pct = (price: number, rate: number) => Math.round(price * rate) / 100
 const steps = [
   {
     icon: 'chat',
-    title: 'Regístrate como aliado',
-    text: 'Escríbenos por WhatsApp. Revisamos tu solicitud y te damos acceso a tu panel de aliado en Rentora.',
+    title: 'Solicita ser aliado',
+    text: 'Escríbenos solo por nuestros canales oficiales: WhatsApp o correo. Verificamos tus datos y te registramos.',
+  },
+  {
+    icon: 'shield',
+    title: 'Recibe tu código',
+    text: 'Te damos acceso a tu panel de aliado y tu código personal (por ejemplo, AL-ANA-7K3Q), que te identifica ante Rentora.',
   },
   {
     icon: 'document',
     title: 'Registra tus prospectos',
-    text: 'Antes de presentarnos una rentadora, regístrala en tu panel con sus datos de contacto. Así queda a tu nombre.',
-  },
-  {
-    icon: 'calendar',
-    title: 'La acompañamos juntos',
-    text: 'Coordinamos la demo y el cierre contigo. Tú presentas, nosotros te apoyamos con todo el proceso.',
+    text: 'Registra cada rentadora en tu panel o compártele tu enlace para que se registre con tu código. Así queda a tu nombre.',
   },
   {
     icon: 'wallet',
@@ -54,7 +55,9 @@ const rules = [
   `Plan Enterprise: comisión única de USD $${ALLY_ENTERPRISE_FLAT} cuando hace su primer pago.`,
   'Solo se comisionan pagos realmente recibidos. El periodo de prueba gratis no genera comisión.',
   'Si la rentadora paga varios meses por adelantado, ganas la comisión de cada mes cubierto.',
-  'La rentadora debe ser nueva en Rentora y estar registrada a tu nombre antes de contratar. Si ya es cliente, ya la trabaja otro aliado o llegó con el código de un cliente, no genera comisión.',
+  'Cada prospecto es de quien lo registra primero. El sistema no permite registrar una rentadora que ya es cliente o que ya está registrada por otro aliado (se valida por nombre, correo y teléfono).',
+  'La rentadora debe ser nueva en Rentora y estar a tu nombre antes de contratar: registrada en tu panel o creada con tu código. Si llegó con el código de un cliente, no genera comisión de aliado.',
+  'Solo atendemos solicitudes de aliados por nuestros canales oficiales: WhatsApp y correo. Rentora nunca te pedirá pagos para unirte.',
   'Si un pago se reembolsa o se revierte, la comisión de ese pago se anula.',
   'Las comisiones se pagan en USD, aunque la rentadora opere en otra moneda.',
 ]
@@ -85,9 +88,23 @@ export const allyFaqs = [
       'En USD, mediante liquidaciones de tus comisiones acumuladas. En tu panel de aliado ves cada comisión, lo que está pendiente y lo que ya se te pagó.',
   },
   {
+    question: '¿Cómo me registro como aliado?',
+    answer: `Escríbenos por WhatsApp al ${rentoraBrand.phoneDisplay} o al correo ${rentoraBrand.supportEmail}. Son nuestros únicos canales oficiales: verificamos tus datos, te registramos en nuestra plataforma comercial y te enviamos el acceso a tu panel.`,
+  },
+  {
+    question: '¿Qué es el código de aliado?',
+    answer:
+      'Es tu identificador personal en Rentora (por ejemplo, AL-ANA-7K3Q). Lo ves en tu panel junto con un enlace para compartir. Si una rentadora se registra con tu enlace o escribe tu código al crear su cuenta, queda asignada a ti automáticamente.',
+  },
+  {
     question: '¿Cómo me aseguro de que la rentadora quede a mi nombre?',
     answer:
-      'Regístrala en tu panel de aliado antes de que contrate. Rentora revisa cada prospecto: si la rentadora ya es cliente o ya la está trabajando otro aliado, no se puede asignar.',
+      'Regístrala en tu panel de aliado en cuanto empieces a hablar con ella, o pídele que se registre con tu código. Cada prospecto es de quien lo registra primero: el sistema no deja que otro aliado registre la misma rentadora (se valida por nombre, correo y teléfono) ni que se registre una que ya es cliente.',
+  },
+  {
+    question: '¿Y si otro aliado ya registró a esa rentadora?',
+    answer:
+      'El sistema te avisará al intentar registrarla y no se te asignará. Si crees que hay un error, escríbenos por nuestros canales oficiales y lo revisamos. Si un prospecto se marca como perdido, vuelve a quedar libre.',
   },
   {
     question: 'Ya soy cliente de Rentora. ¿Este programa es para mí?',
@@ -134,14 +151,20 @@ export function AllyContent() {
                 No necesitas ser cliente. Preséntanos rentadoras de vehículos y
                 gana una comisión por cada mensualidad que paguen: el{' '}
                 {ALLY_RATE_FIRST_YEAR}% el primer año y el {ALLY_RATE_AFTER}%
-                después.
+                después. Te damos tu propio código de aliado y cada prospecto
+                que registres queda protegido a tu nombre.
               </p>
               <div className="r-hero-buttons">
                 <ButtonLink href={whatsappUrl(JOIN_MESSAGE)} trackLabel="aliados_unirme">
                   Quiero ser aliado
                 </ButtonLink>
-                <ButtonLink href="#cuanto-ganas" secondary external={false} trackLabel="aliados_ver_ganancias">
-                  Ver cuánto puedo ganar
+                <ButtonLink
+                  href={`mailto:${rentoraBrand.supportEmail}?subject=${encodeURIComponent(JOIN_EMAIL_SUBJECT)}`}
+                  secondary
+                  external={false}
+                  trackLabel="aliados_correo"
+                >
+                  Escribir por correo
                 </ButtonLink>
               </div>
             </div>
@@ -157,7 +180,7 @@ export function AllyContent() {
                   <Icon name="check" size={16} /> Ingreso recurrente mientras pague
                 </li>
                 <li>
-                  <Icon name="check" size={16} /> Panel propio para tus prospectos
+                  <Icon name="check" size={16} /> Tu código y prospectos protegidos
                 </li>
                 <li>
                   <Icon name="check" size={16} /> Pagado en USD
@@ -176,7 +199,7 @@ export function AllyContent() {
               <>
                 Tú conectas.
                 <br />
-                <span>Nosotros te acompañamos.</span>
+                <span>Tu código te identifica.</span>
               </>
             }
           />
@@ -323,7 +346,10 @@ export function AllyContent() {
             <br />
             <span>Conviértelos en ingresos cada mes.</span>
           </h2>
-          <p>Escríbenos y te explicamos cómo empezar hoy.</p>
+          <p>
+            Escríbenos por WhatsApp o a {rentoraBrand.supportEmail}. Son
+            nuestros únicos canales oficiales.
+          </p>
           <ButtonLink href={whatsappUrl(JOIN_MESSAGE)} trackLabel="aliados_cta_final">
             Quiero ser aliado
           </ButtonLink>
