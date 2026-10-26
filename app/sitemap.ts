@@ -17,12 +17,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: 'monthly',
       priority: 0.9,
     },
-    {
-      url: `${rentoraBrand.siteUrl}/referidos`,
+    ...['referidos', 'aliados'].map((path) => ({
+      url: `${rentoraBrand.siteUrl}/${path}`,
       lastModified: now,
-      changeFrequency: 'monthly',
+      changeFrequency: 'monthly' as const,
       priority: 0.6,
-    },
+    })),
     ...['terminos', 'privacidad'].map((path) => ({
       url: `${rentoraBrand.siteUrl}/${path}`,
       lastModified: now,
