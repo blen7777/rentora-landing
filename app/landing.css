@@ -4166,8 +4166,30 @@
 .r-ref-earn .r-legal-table-wrap {
   margin-top: 32px;
 }
+/* Tabla propia: a diferencia de .r-legal-table no se apila en movil, asi el
+   precio y la comision conservan sus encabezados. */
+.r-ref-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+}
+.r-ref-table thead th {
+  background: #f1f4f9;
+  color: var(--r-ink);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  text-align: left;
+  padding: 12px 18px;
+}
+.r-ref-table tbody th,
+.r-ref-table td {
+  text-align: left;
+  padding: 16px 18px;
+  border-top: 1px solid var(--r-line);
+}
 .r-ref-table tbody th {
-  width: auto;
   font-weight: 550;
 }
 .r-ref-table td strong {
@@ -4236,6 +4258,21 @@
 @media (max-width: 600px) {
   .r-ref-steps {
     grid-template-columns: 1fr;
+  }
+  .r-ref-table {
+    font-size: 13px;
+  }
+  .r-ref-table thead th {
+    font-size: 10px;
+    letter-spacing: 0.5px;
+    padding: 10px 10px;
+  }
+  .r-ref-table tbody th,
+  .r-ref-table td {
+    padding: 12px 10px;
+  }
+  .r-ref-table td strong {
+    font-size: 14px;
   }
   .r-ref-highlight {
     padding: 26px;

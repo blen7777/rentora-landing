@@ -209,7 +209,7 @@ export function ReferralContent() {
             con descuento, se calcula sobre el precio con descuento.
           </SectionHeading>
           <div className="r-legal-table-wrap">
-            <table className="r-legal-table r-ref-table">
+            <table className="r-ref-table">
               <thead>
                 <tr>
                   <th scope="col">Plan de la rentadora</th>
