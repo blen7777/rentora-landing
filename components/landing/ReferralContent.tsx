@@ -40,7 +40,7 @@ const steps = [
   {
     icon: 'wallet',
     title: 'Recibes tu comisión',
-    text: 'Te pagamos en USD: en dinero o como crédito en tu factura de Rentora. Tú ves cuándo queda pagada.',
+    text: 'Te pagamos la comisión aparte, en dinero (USD). Tú ves cuándo queda pagada.',
   },
 ]
 
@@ -83,7 +83,7 @@ export const referralFaqs = [
   {
     question: '¿Cómo y cuándo me pagan?',
     answer:
-      'Rentora te paga la comisión en USD, en dinero (transferencia) o como crédito en tu próxima factura de Rentora. En el módulo Referidos verás cada comisión como "Pendiente de pago" y luego como "Pagada", con su fecha.',
+      'Rentora te paga la comisión aparte, en dinero (USD), por transferencia; no se descuenta de tu mensualidad de Rentora. En el módulo Referidos verás cada comisión como "Pendiente de pago" y luego como "Pagada", con su fecha.',
   },
   {
     question: '¿Es un pago mensual?',
@@ -162,7 +162,7 @@ export function ReferralContent() {
                   <Icon name="check" size={16} /> Pagado en USD
                 </li>
                 <li>
-                  <Icon name="check" size={16} /> En dinero o crédito en tu factura
+                  <Icon name="check" size={16} /> Pago aparte de tu mensualidad
                 </li>
               </ul>
             </div>
