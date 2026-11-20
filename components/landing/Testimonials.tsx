@@ -20,13 +20,13 @@ export type TestimonialsResponse = {
   average: number | null
 }
 
-const API_URL = (process.env.RENTORA_API_URL || 'https://api.rentora-app.com').replace(/\/$/, '')
+const API_URL = (process.env.RENTORA_API_URL || 'https://backend-production-3b5b.up.railway.app').replace(/\/$/, '')
 const LIMIT = 6
 
 export async function getTestimonials(): Promise<TestimonialsResponse | null> {
   try {
     const response = await fetch(`${API_URL}/api/public/platform-reviews?limit=${LIMIT}`, {
-      next: { revalidate: 3600 },
+      next: { revalidate: 60 },
       signal: AbortSignal.timeout(4000),
     })
     if (!response.ok) return null
