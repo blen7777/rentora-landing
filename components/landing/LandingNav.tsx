@@ -4,14 +4,21 @@ import { useEffect, useRef, useState } from 'react'
 import { usePathname } from 'next/navigation'
 import { Brand, ButtonLink, Icon } from './shared'
 
-const links = [
+const baseLinks = [
   { href: '#modulos', label: 'Soluciones' },
   { href: '#como-funciona', label: 'Cómo funciona' },
   { href: '#precios', label: 'Planes' },
   { href: '#faq', label: 'Preguntas frecuentes' },
 ]
 
-export function LandingNav() {
+const reviewsLink = { href: '#testimonios', label: 'Reseñas' }
+
+// "Reseñas" solo aparece cuando la home tiene testimonios que mostrar, para no
+// llevar a una sección vacía. Va antes de "Planes", igual que en la página.
+export function LandingNav({ showReviews = false }: { showReviews?: boolean }) {
+  const links = showReviews
+    ? [...baseLinks.slice(0, 2), reviewsLink, ...baseLinks.slice(2)]
+    : baseLinks
   const pathname = usePathname()
   const anchorHref = (href: string) => (pathname === '/' ? href : `/${href}`)
   const [open, setOpen] = useState(false)

@@ -3,7 +3,11 @@ import { LandingHero } from '@/components/landing/LandingHero'
 import { SalvadorJourney } from '@/components/landing/SalvadorJourney'
 import { getDemoVideoSource } from '@/lib/demo-video'
 import { FeatureSections } from '@/components/landing/FeatureSections'
-import { Testimonials } from '@/components/landing/Testimonials'
+import {
+  getTestimonials,
+  hasTestimonials,
+  Testimonials,
+} from '@/components/landing/Testimonials'
 import {
   ConversionSections,
   LandingFooter,
@@ -15,7 +19,8 @@ import { buildSeoJsonLd, rentoraBrand } from '@/lib/rentora-seo'
 
 const pageUrl = rentoraBrand.canonicalUrl
 
-export default function Home() {
+export default async function Home() {
+  const testimonials = await getTestimonials()
   const faqSchema = {
     '@context': 'https://schema.org',
     '@type': 'FAQPage',
@@ -40,12 +45,12 @@ export default function Home() {
       <a className="r-skip-link" href="#contenido">
         Saltar al contenido
       </a>
-      <LandingNav />
+      <LandingNav showReviews={hasTestimonials(testimonials)} />
       <main id="contenido">
         <LandingHero videoSource={getDemoVideoSource()} />
         <SalvadorJourney videoSource={getDemoVideoSource()} />
         <FeatureSections />
-        <Testimonials />
+        <Testimonials data={testimonials} />
         <ConversionSections />
       </main>
       <LandingFooter />

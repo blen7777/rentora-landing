@@ -14,7 +14,7 @@ type Testimonial = {
   featured: boolean
 }
 
-type TestimonialsResponse = {
+export type TestimonialsResponse = {
   items: Testimonial[]
   total: number
   average: number | null
@@ -23,7 +23,7 @@ type TestimonialsResponse = {
 const API_URL = (process.env.RENTORA_API_URL || 'https://api.rentora-app.com').replace(/\/$/, '')
 const LIMIT = 6
 
-async function getTestimonials(): Promise<TestimonialsResponse | null> {
+export async function getTestimonials(): Promise<TestimonialsResponse | null> {
   try {
     const response = await fetch(`${API_URL}/api/public/platform-reviews?limit=${LIMIT}`, {
       next: { revalidate: 3600 },
@@ -49,9 +49,11 @@ function Stars({ value }: { value: number }) {
   )
 }
 
-export async function Testimonials() {
-  const data = await getTestimonials()
-  if (!data || data.items.length === 0) return null
+export const hasTestimonials = (data: TestimonialsResponse | null): data is TestimonialsResponse =>
+  Boolean(data && data.items.length > 0)
+
+export function Testimonials({ data }: { data: TestimonialsResponse | null }) {
+  if (!hasTestimonials(data)) return null
 
   return (
     <section className="r-testimonials-section r-section" id="testimonios">
