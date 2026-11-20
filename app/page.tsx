@@ -3,6 +3,7 @@ import { LandingHero } from '@/components/landing/LandingHero'
 import { SalvadorJourney } from '@/components/landing/SalvadorJourney'
 import { getDemoVideoSource } from '@/lib/demo-video'
 import { FeatureSections } from '@/components/landing/FeatureSections'
+import { Testimonials } from '@/components/landing/Testimonials'
 import {
   ConversionSections,
   LandingFooter,
@@ -44,6 +45,7 @@ export default function Home() {
         <LandingHero videoSource={getDemoVideoSource()} />
         <SalvadorJourney videoSource={getDemoVideoSource()} />
         <FeatureSections />
+        <Testimonials />
         <ConversionSections />
       </main>
       <LandingFooter />
