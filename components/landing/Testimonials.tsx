@@ -1,3 +1,4 @@
+import Image from 'next/image'
 import { SectionHeading } from './shared'
 
 // Reseñas que las rentadoras dejan sobre Rentora y que el SuperAdmin aprobó
@@ -37,6 +38,38 @@ export async function getTestimonials(): Promise<TestimonialsResponse | null> {
   }
 }
 
+// Match the public API's country name in either Spanish or English.
+const countryCodesByName = new Map<string, string>()
+const normalizeCountry = (name: string) =>
+  name.trim().normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase()
+for (const locale of ['es', 'en']) {
+  const regions = new Intl.DisplayNames([locale], { type: 'region', fallback: 'none' })
+  for (let first = 65; first <= 90; first++) {
+    for (let second = 65; second <= 90; second++) {
+      const code = String.fromCharCode(first, second)
+      const name = regions.of(code)
+      if (name) countryCodesByName.set(normalizeCountry(name), code.toLowerCase())
+    }
+  }
+}
+
+function CountryFlag({ country }: { country: string }) {
+  const code = countryCodesByName.get(normalizeCountry(country))
+  if (!code) return null
+
+  return (
+    <Image
+      className="r-testimonial-flag"
+      src={`https://flagcdn.com/${code}.svg`}
+      alt=""
+      aria-hidden="true"
+      width={20}
+      height={14}
+      unoptimized
+    />
+  )
+}
+
 function Stars({ value }: { value: number }) {
   return (
     <span className="r-testimonial-stars" role="img" aria-label={`${value} de 5 estrellas`}>
@@ -74,7 +107,7 @@ export function Testimonials({ data }: { data: TestimonialsResponse | null }) {
               : 'Opiniones de empresas que ya usan Rentora todos los días.'}
           </SectionHeading>
         </div>
-        <div className="r-testimonials">
+        <div className={`r-testimonials${data.items.length <= 2 ? ' r-testimonials-centered' : ''}`}>
           {data.items.map((item, index) => {
             const author = [item.first_name, item.role].filter(Boolean).join(' · ')
             const company = [item.company_name, item.country_name].filter(Boolean).join(' · ')
@@ -84,7 +117,7 @@ export function Testimonials({ data }: { data: TestimonialsResponse | null }) {
                 <blockquote>“{item.comment}”</blockquote>
                 <figcaption>
                   {author && <strong>{author}</strong>}
-                  {company && <span>{company}</span>}
+                  {company && <span>{company}{item.country_name && <CountryFlag country={item.country_name} />}</span>}
                 </figcaption>
               </figure>
             )
