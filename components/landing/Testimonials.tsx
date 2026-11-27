@@ -48,7 +48,10 @@ for (const locale of ['es', 'en']) {
     for (let second = 65; second <= 90; second++) {
       const code = String.fromCharCode(first, second)
       const name = regions.of(code)
-      if (name) countryCodesByName.set(normalizeCountry(name), code.toLowerCase())
+      // Deprecated aliases (FX, UK, SU) must not overwrite FR, GB or RU.
+      if (name && new Intl.Locale(`und-${code}`).region === code) {
+        countryCodesByName.set(normalizeCountry(name), code.toLowerCase())
+      }
     }
   }
 }
